@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1.泰勒公式求极限（等价无穷小）1.1 泰勒公式1. 泰勒公式$$f(x) &#x3D; \frac{1}{0!}f({x_0})+\frac{1}{1!}f^{‘}(x_0)(x-x_0)+\frac{1}{2!}f^{‘’}(x_0)(x-x_0)^2+…+\frac{1}{n!}f^{(n)}(x_0)(x-x_0)^n+R_n(x)$$ 2. 麦克劳林公式 令 $x_0&#x3D;0$，则">
+  <meta name="description" content="1.泰勒公式求极限（等价无穷小）1.1 泰勒公式1. 泰勒公式  f(x) &#x3D; \frac{1}{0!}f({x_0})+\frac{1}{1!}f^{&#39;}(x_0)(x-x_0)+\frac{1}{2!}f^{&#39;&#39;}(x_0)(x-x_0)^2+…+\frac{1}{n!}f^{(n)}(x_0)(x-x_0)^n+R_n(x)2. 麦克劳林公式 令 $x_0&#x3D;0$，则泰勒公式也叫麦克劳林公式。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jixian">
 <meta property="og:url" content="http://example.com/2024/05/04/jixian/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1.泰勒公式求极限（等价无穷小）1.1 泰勒公式1. 泰勒公式$$f(x) &#x3D; \frac{1}{0!}f({x_0})+\frac{1}{1!}f^{‘}(x_0)(x-x_0)+\frac{1}{2!}f^{‘’}(x_0)(x-x_0)^2+…+\frac{1}{n!}f^{(n)}(x_0)(x-x_0)^n+R_n(x)$$ 2. 麦克劳林公式 令 $x_0&#x3D;0$，则">
+<meta property="og:description" content="1.泰勒公式求极限（等价无穷小）1.1 泰勒公式1. 泰勒公式  f(x) &#x3D; \frac{1}{0!}f({x_0})+\frac{1}{1!}f^{&#39;}(x_0)(x-x_0)+\frac{1}{2!}f^{&#39;&#39;}(x_0)(x-x_0)^2+…+\frac{1}{n!}f^{(n)}(x_0)(x-x_0)^n+R_n(x)2. 麦克劳林公式 令 $x_0&#x3D;0$，则泰勒公式也叫麦克劳林公式。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-05-04T09:23:05.000Z">
 <meta property="article:modified_time" content="2024-05-04T09:23:31.239Z">
@@ -188,29 +188,83 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="1-泰勒公式求极限（等价无穷小）"><a href="#1-泰勒公式求极限（等价无穷小）" class="headerlink" title="1.泰勒公式求极限（等价无穷小）"></a>1.泰勒公式求极限（等价无穷小）</h2><h4 id="1-1-泰勒公式"><a href="#1-1-泰勒公式" class="headerlink" title="1.1 泰勒公式"></a>1.1 泰勒公式</h4><p><strong>1. 泰勒公式</strong><br>$$<br>f(x) &#x3D; \frac{1}{0!}f({x_0})+\frac{1}{1!}f^{‘}(x_0)(x-x_0)+\frac{1}{2!}f^{‘’}(x_0)(x-x_0)^2+…+\frac{1}{n!}f^{(n)}(x_0)(x-x_0)^n+R_n(x)<br>$$</p>
-<p><strong>2. 麦克劳林公式</strong></p>
-<p>令 $x_0&#x3D;0$，则泰勒公式也叫麦克劳林公式。<br>$$<br>f(x) &#x3D; \frac{1}{0!}f(0)+\frac{1}{1!}f^{‘}(0)x+…+\frac{1}{n!}f^{(n)}(0)x^n+o(x^n)&#x3D;f(0)+f^{‘}(0)x+…+\frac{1}{n!}f^{(n)}(0)x^n+o(x^n)<br>$$</p>
-<h4 id="1-2-推导泰勒公式"><a href="#1-2-推导泰勒公式" class="headerlink" title="1.2 推导泰勒公式"></a>1.2 推导泰勒公式</h4><h5 id="1-2-1-推导-sinx-的泰勒公式"><a href="#1-2-1-推导-sinx-的泰勒公式" class="headerlink" title="1.2.1 推导 $sinx$ 的泰勒公式"></a>1.2.1 推导 $sinx$ 的泰勒公式</h5><p>$$<br>\begin{aligned}<br>sinx &amp;&#x3D; sin0+(sin0)^{‘}x+\frac{1}{2}(sin0)^{‘’}x^2+…+\frac{1}{n!}(sin0)^{(n)}x^n+o(x^n) \<br>&amp;&#x3D;sin0+xcos0-\frac{1}{2}x^2sin0-\frac{1}{6}x^3cos0+\frac{1}{24}x^4sin0+\frac{1}{120}x^5cos0+…+o(x^{n})\<br>&amp;&#x3D;x-\frac{1}{3!}x^3+\frac{1}{5!}x^5-\frac{1}{7!}x^7+\frac{1}{9!}x^9…+\frac{(-1)^n}{(2n+1)!}x^{2n+1}+o(x^{2n+1})<br>\end{aligned}<br>$$</p>
-<h5 id="1-2-2-推导-cosx-的泰勒公式"><a href="#1-2-2-推导-cosx-的泰勒公式" class="headerlink" title="1.2.2 推导 $cosx$ 的泰勒公式"></a>1.2.2 推导 $cosx$ 的泰勒公式</h5><p>$$<br>\begin{aligned}<br>cosx &amp;&#x3D; cos0+(cos0)^{‘}x+\frac{1}{2}(cos0)^{‘’}x^2+…+\frac{1}{n!}(cos0)^{(n)}x^n+o(x^n) \<br>&amp;&#x3D;cos0-xsin0-\frac{1}{2}x^2cos0+\frac{1}{6}x^3sin0+\frac{1}{24}x^4cos0-\frac{1}{120}x^5sin0+…+o(x^{n})\<br>&amp;&#x3D;1-\frac{1}{2!}x^2+\frac{1}{4!}x^4-\frac{1}{6!}x^6+\frac{1}{8!}x^8…+\frac{(-1)^{n}}{(2n)!}x^{2n}+o(x^{2n})<br>\end{aligned}<br>$$</p>
-<h5 id="1-2-3-推导-tanx-的泰勒公式"><a href="#1-2-3-推导-tanx-的泰勒公式" class="headerlink" title="1.2.3 推导 $tanx$ 的泰勒公式"></a>1.2.3 推导 $tanx$ 的泰勒公式</h5><p>$$<br>\begin{aligned}<br>tanx &amp;&#x3D; tan0+(tan0)^{‘}x+\frac{1}{2}(tan0)^{‘’}x^2+…+\frac{1}{n!}(tan0)^{(n)}x^n+o(x^n) \<br>&amp;&#x3D;tan0+xsec^20+\frac{1}{2}x^2(2sec^20tan0)+\frac{1}{6}x^3(4sec^20tan^20+2sec^40)+…+o(x^{n})\<br>&amp;&#x3D;x+\frac{1}{3}x^3…+o(x^n)<br>\end{aligned}<br>$$</p>
-<h5 id="1-2-4-推导-e-x-的泰勒公式"><a href="#1-2-4-推导-e-x-的泰勒公式" class="headerlink" title="1.2.4 推导 $e^x$ 的泰勒公式"></a>1.2.4 推导 $e^x$ 的泰勒公式</h5><p>$$<br>\begin{aligned}<br>e^x &amp;&#x3D; e^0+(e^0)^{‘}x+\frac{1}{2}(e^0)^{‘’}x^2+\frac{1}{6}(e^0)^{‘’’}x^3+…+\frac{1}{n!}(e^0)^{(n)}x^{n}+o(x^n)\<br>&amp;&#x3D;1+x+\frac{1}{2}x^2+\frac{1}{6}x^3+…+\frac{1}{n!}x^n+o(x^n)<br>\end{aligned}<br>$$</p>
-<h4 id="1-3-常用的泰勒公式"><a href="#1-3-常用的泰勒公式" class="headerlink" title="1.3 常用的泰勒公式"></a>1.3 常用的泰勒公式</h4><p>$$<br>\begin{aligned}<br>&amp;sinx &#x3D; x-\frac{1}{6}x^3+\frac{1}{120}x^5+o(x^5)\<br>&amp;cosx &#x3D; 1 - \frac{1}{2}x^2 + \frac{1}{24}x^4 + o(x^4)\<br>&amp;tanx &#x3D; x+\frac{1}{3}x^3+o(x^3)\<br>&amp;arcsinx &#x3D; x + \frac{1}{6}x^3+o(x^3)\<br>&amp;arctanx &#x3D; x-\frac{1}{3}x^3+o(x^3)\<br>&amp;ln(1+x) &#x3D; x-\frac{1}{2}x^2+o(x^2)\<br>&amp;e^x &#x3D; 1+x+\frac{1}{2}x^2+o(x^2)\<br>&amp;(1+x)^a&#x3D;1+ax+\frac{a(a-1)}{2}x^2+o(x^2)<br>\end{aligned}<br>$$</p>
-<h4 id="1-4-常见的等价无穷小"><a href="#1-4-常见的等价无穷小" class="headerlink" title="1.4 常见的等价无穷小"></a>1.4 常见的等价无穷小</h4><p>$$<br>\begin{aligned}<br>&amp;sinx\sim x\<br>&amp;tanx\sim x\<br>&amp;arcsinx\sim x\<br>&amp;arctanx\sim{x}\<br>&amp;ln(1+x)\sim{x}\<br>&amp;e^x-1\sim{x}\<br>&amp;1-cosx\sim{\frac{1}{2}x^2}\<br>&amp;(1+x)^a-1\sim{ax}\<br>&amp;x-ln(1+x)\sim{\frac{1}{2}x^2}\<br>&amp;sinx-x \sim{-\frac{1}{6}x^3}\<br>&amp;arcsinx-x \sim{\frac{1}{6}x^3}\<br>&amp;tanx-x \sim\frac{1}{3}x^3\<br>&amp;arctanx - x \sim - \frac{1}{3}x^3\<br>\end{aligned}<br>$$</p>
-<h2 id="2-洛必达法则求极限（求导）"><a href="#2-洛必达法则求极限（求导）" class="headerlink" title="2.洛必达法则求极限（求导）"></a>2.洛必达法则求极限（求导）</h2><h4 id="2-1-洛必达法则的条件"><a href="#2-1-洛必达法则的条件" class="headerlink" title="2.1 洛必达法则的条件"></a>2.1 洛必达法则的条件</h4><p>对于形如 $\displaystyle\lim_{x \to c}\frac{f(x)}{g(x)}$ 的式子，若  $\displaystyle\lim_{x \to c}\frac{f^{‘}(x)}{g^{‘}(x)}$ 存在，</p>
-<p>且 $\displaystyle\lim_{x \to c}{f(x)}&#x3D;\lim_{x \to c}{g(x)}&#x3D;0$ 或 $\displaystyle\lim_{x \to c}{|f(x)|}&#x3D;\lim_{x \to c}{|g(x)|}&#x3D;\infty$，（$\frac{0}{0}$ 或 $\frac{\infty}{\infty}$型）</p>
-<p>则 $\displaystyle\lim_{x \to c}\frac{f(x)}{g(x)}&#x3D;\displaystyle\lim_{x \to c}\frac{f^{‘}(x)}{g^{‘}(x)}$。</p>
-<h4 id="2-2-常用的导数公式"><a href="#2-2-常用的导数公式" class="headerlink" title="2.2 常用的导数公式"></a>2.2 常用的导数公式</h4><h5 id="2-2-1-三角函数"><a href="#2-2-1-三角函数" class="headerlink" title="2.2.1 三角函数"></a>2.2.1 三角函数</h5><p>$$<br>\begin{aligned}<br>&amp;(sinx)^{‘}&#x3D;cosx\<br>&amp;(cosx)^{‘}&#x3D;-sinx\<br>&amp;(tanx)^{‘}&#x3D;sec^2x\<br>&amp;(cotx)^{‘}&#x3D;-csc^2x\<br>&amp;(secx)^{‘}&#x3D;secxtanx\<br>&amp;(cscx)^{‘}&#x3D;-cscxcotx\<br>\end{aligned}<br>$$</p>
-<h5 id="2-2-2-反三角函数"><a href="#2-2-2-反三角函数" class="headerlink" title="2.2.2 反三角函数"></a>2.2.2 反三角函数</h5><p>$$<br>\begin{aligned}<br>&amp;(arcsinx)^{‘}&#x3D;\frac{1}{\sqrt{1-x^2}}\<br>&amp;(arccosx)^{‘}&#x3D;-\frac{1}{\sqrt{1-x^2}}\<br>&amp;(arctanx)^{‘}&#x3D;\frac{1}{1+x^2}\<br>&amp;(arccotx)^{‘}&#x3D;-\frac{1}{1+x^2}\<br>&amp;(arcsecx)^{‘}&#x3D;\frac{1}{|x|\sqrt{x^2-1}},|x|&gt;1\<br>&amp;(arccscx)^{‘}&#x3D;-\frac{1}{|x|\sqrt{x^2-1}},|x|&gt;1\<br>\end{aligned}<br>$$</p>
-<h2 id="3-幂函数求极限"><a href="#3-幂函数求极限" class="headerlink" title="3.幂函数求极限"></a>3.幂函数求极限</h2><h4 id="3-1-指数化"><a href="#3-1-指数化" class="headerlink" title="3.1 指数化"></a>3.1 指数化</h4><p>公式： $f(x)^{g(x)}&#x3D;e^{g(x)lnf(x)}$</p>
+        <h2 id="1-泰勒公式求极限（等价无穷小）"><a href="#1-泰勒公式求极限（等价无穷小）" class="headerlink" title="1.泰勒公式求极限（等价无穷小）"></a>1.泰勒公式求极限（等价无穷小）</h2><h4 id="1-1-泰勒公式"><a href="#1-1-泰勒公式" class="headerlink" title="1.1 泰勒公式"></a>1.1 泰勒公式</h4><p><strong>1. 泰勒公式</strong></p>
+<script type="math/tex; mode=display">
+f(x) = \frac{1}{0!}f({x_0})+\frac{1}{1!}f^{'}(x_0)(x-x_0)+\frac{1}{2!}f^{''}(x_0)(x-x_0)^2+…+\frac{1}{n!}f^{(n)}(x_0)(x-x_0)^n+R_n(x)</script><p><strong>2. 麦克劳林公式</strong></p>
+<p>令 $x_0=0$，则泰勒公式也叫麦克劳林公式。</p>
+<script type="math/tex; mode=display">
+f(x) = \frac{1}{0!}f(0)+\frac{1}{1!}f^{'}(0)x+…+\frac{1}{n!}f^{(n)}(0)x^n+o(x^n)=f(0)+f^{'}(0)x+…+\frac{1}{n!}f^{(n)}(0)x^n+o(x^n)</script><h4 id="1-2-推导泰勒公式"><a href="#1-2-推导泰勒公式" class="headerlink" title="1.2 推导泰勒公式"></a>1.2 推导泰勒公式</h4><h5 id="1-2-1-推导-sinx-的泰勒公式"><a href="#1-2-1-推导-sinx-的泰勒公式" class="headerlink" title="1.2.1 推导 $sinx$ 的泰勒公式"></a>1.2.1 推导 $sinx$ 的泰勒公式</h5><script type="math/tex; mode=display">
+\begin{aligned}
+sinx &= sin0+(sin0)^{'}x+\frac{1}{2}(sin0)^{''}x^2+…+\frac{1}{n!}(sin0)^{(n)}x^n+o(x^n) \\ 
+&=sin0+xcos0-\frac{1}{2}x^2sin0-\frac{1}{6}x^3cos0+\frac{1}{24}x^4sin0+\frac{1}{120}x^5cos0+…+o(x^{n})\\
+&=x-\frac{1}{3!}x^3+\frac{1}{5!}x^5-\frac{1}{7!}x^7+\frac{1}{9!}x^9…+\frac{(-1)^n}{(2n+1)!}x^{2n+1}+o(x^{2n+1})
+\end{aligned}</script><h5 id="1-2-2-推导-cosx-的泰勒公式"><a href="#1-2-2-推导-cosx-的泰勒公式" class="headerlink" title="1.2.2 推导 $cosx$ 的泰勒公式"></a>1.2.2 推导 $cosx$ 的泰勒公式</h5><script type="math/tex; mode=display">
+\begin{aligned}
+cosx &= cos0+(cos0)^{'}x+\frac{1}{2}(cos0)^{''}x^2+…+\frac{1}{n!}(cos0)^{(n)}x^n+o(x^n) \\ 
+&=cos0-xsin0-\frac{1}{2}x^2cos0+\frac{1}{6}x^3sin0+\frac{1}{24}x^4cos0-\frac{1}{120}x^5sin0+…+o(x^{n})\\
+&=1-\frac{1}{2!}x^2+\frac{1}{4!}x^4-\frac{1}{6!}x^6+\frac{1}{8!}x^8…+\frac{(-1)^{n}}{(2n)!}x^{2n}+o(x^{2n})
+\end{aligned}</script><h5 id="1-2-3-推导-tanx-的泰勒公式"><a href="#1-2-3-推导-tanx-的泰勒公式" class="headerlink" title="1.2.3 推导 $tanx$ 的泰勒公式"></a>1.2.3 推导 $tanx$ 的泰勒公式</h5><script type="math/tex; mode=display">
+\begin{aligned}
+tanx &= tan0+(tan0)^{'}x+\frac{1}{2}(tan0)^{''}x^2+…+\frac{1}{n!}(tan0)^{(n)}x^n+o(x^n) \\ 
+&=tan0+xsec^20+\frac{1}{2}x^2(2sec^20tan0)+\frac{1}{6}x^3(4sec^20tan^20+2sec^40)+…+o(x^{n})\\
+&=x+\frac{1}{3}x^3…+o(x^n)
+\end{aligned}</script><h5 id="1-2-4-推导-e-x-的泰勒公式"><a href="#1-2-4-推导-e-x-的泰勒公式" class="headerlink" title="1.2.4 推导 $e^x$ 的泰勒公式"></a>1.2.4 推导 $e^x$ 的泰勒公式</h5><script type="math/tex; mode=display">
+\begin{aligned}
+e^x &= e^0+(e^0)^{'}x+\frac{1}{2}(e^0)^{''}x^2+\frac{1}{6}(e^0)^{'''}x^3+…+\frac{1}{n!}(e^0)^{(n)}x^{n}+o(x^n)\\
+&=1+x+\frac{1}{2}x^2+\frac{1}{6}x^3+…+\frac{1}{n!}x^n+o(x^n)
+\end{aligned}</script><h4 id="1-3-常用的泰勒公式"><a href="#1-3-常用的泰勒公式" class="headerlink" title="1.3 常用的泰勒公式"></a>1.3 常用的泰勒公式</h4><script type="math/tex; mode=display">
+\begin{aligned}
+&sinx = x-\frac{1}{6}x^3+\frac{1}{120}x^5+o(x^5)\\
+&cosx = 1 - \frac{1}{2}x^2 + \frac{1}{24}x^4 + o(x^4)\\
+&tanx = x+\frac{1}{3}x^3+o(x^3)\\
+&arcsinx = x + \frac{1}{6}x^3+o(x^3)\\
+&arctanx = x-\frac{1}{3}x^3+o(x^3)\\
+&ln(1+x) = x-\frac{1}{2}x^2+o(x^2)\\
+&e^x = 1+x+\frac{1}{2}x^2+o(x^2)\\
+&(1+x)^a=1+ax+\frac{a(a-1)}{2}x^2+o(x^2)
+\end{aligned}</script><h4 id="1-4-常见的等价无穷小"><a href="#1-4-常见的等价无穷小" class="headerlink" title="1.4 常见的等价无穷小"></a>1.4 常见的等价无穷小</h4><script type="math/tex; mode=display">
+\begin{aligned}
+&sinx\sim x\\
+&tanx\sim x\\
+&arcsinx\sim x\\
+&arctanx\sim{x}\\
+&ln(1+x)\sim{x}\\
+&e^x-1\sim{x}\\
+&1-cosx\sim{\frac{1}{2}x^2}\\
+&(1+x)^a-1\sim{ax}\\
+&x-ln(1+x)\sim{\frac{1}{2}x^2}\\
+&sinx-x \sim{-\frac{1}{6}x^3}\\
+&arcsinx-x \sim{\frac{1}{6}x^3}\\
+&tanx-x \sim\frac{1}{3}x^3\\
+&arctanx - x \sim - \frac{1}{3}x^3\\
+\end{aligned}</script><h2 id="2-洛必达法则求极限（求导）"><a href="#2-洛必达法则求极限（求导）" class="headerlink" title="2.洛必达法则求极限（求导）"></a>2.洛必达法则求极限（求导）</h2><h4 id="2-1-洛必达法则的条件"><a href="#2-1-洛必达法则的条件" class="headerlink" title="2.1 洛必达法则的条件"></a>2.1 洛必达法则的条件</h4><p>对于形如 $\displaystyle\lim_{x \to c}\frac{f(x)}{g(x)}$ 的式子，若  $\displaystyle\lim_{x \to c}\frac{f^{‘}(x)}{g^{‘}(x)}$ 存在，</p>
+<p>且 $\displaystyle\lim_{x \to c}{f(x)}=\lim_{x \to c}{g(x)}=0$ 或 $\displaystyle\lim_{x \to c}{|f(x)|}=\lim_{x \to c}{|g(x)|}=\infty$，（$\frac{0}{0}$ 或 $\frac{\infty}{\infty}$型）</p>
+<p>则 $\displaystyle\lim_{x \to c}\frac{f(x)}{g(x)}=\displaystyle\lim_{x \to c}\frac{f^{‘}(x)}{g^{‘}(x)}$。</p>
+<h4 id="2-2-常用的导数公式"><a href="#2-2-常用的导数公式" class="headerlink" title="2.2 常用的导数公式"></a>2.2 常用的导数公式</h4><h5 id="2-2-1-三角函数"><a href="#2-2-1-三角函数" class="headerlink" title="2.2.1 三角函数"></a>2.2.1 三角函数</h5><script type="math/tex; mode=display">
+\begin{aligned}
+&(sinx)^{'}=cosx\\
+&(cosx)^{'}=-sinx\\
+&(tanx)^{'}=sec^2x\\
+&(cotx)^{'}=-csc^2x\\
+&(secx)^{'}=secxtanx\\
+&(cscx)^{'}=-cscxcotx\\
+\end{aligned}</script><h5 id="2-2-2-反三角函数"><a href="#2-2-2-反三角函数" class="headerlink" title="2.2.2 反三角函数"></a>2.2.2 反三角函数</h5><script type="math/tex; mode=display">
+\begin{aligned}
+&(arcsinx)^{'}=\frac{1}{\sqrt{1-x^2}}\\
+&(arccosx)^{'}=-\frac{1}{\sqrt{1-x^2}}\\
+&(arctanx)^{'}=\frac{1}{1+x^2}\\
+&(arccotx)^{'}=-\frac{1}{1+x^2}\\
+&(arcsecx)^{'}=\frac{1}{|x|\sqrt{x^2-1}},|x|>1\\
+&(arccscx)^{'}=-\frac{1}{|x|\sqrt{x^2-1}},|x|>1\\
+\end{aligned}</script><h2 id="3-幂函数求极限"><a href="#3-幂函数求极限" class="headerlink" title="3.幂函数求极限"></a>3.幂函数求极限</h2><h4 id="3-1-指数化"><a href="#3-1-指数化" class="headerlink" title="3.1 指数化"></a>3.1 指数化</h4><p>公式： $f(x)^{g(x)}=e^{g(x)lnf(x)}$</p>
 <h4 id="3-2-未定式-1-infty-型"><a href="#3-2-未定式-1-infty-型" class="headerlink" title="3.2 未定式 $1^\infty$ 型"></a>3.2 未定式 $1^\infty$ 型</h4><p>公式： $\displaystyle\lim_{x \to 0}(1+x)^{\frac{1}{x}} \sim{e}$ </p>
 <p>或者：$\displaystyle\lim_{x \to \infty}(1+\frac{1}{x})^{x} \sim{e}$</p>
 <h2 id="4-特殊情况"><a href="#4-特殊情况" class="headerlink" title="4.特殊情况"></a>4.特殊情况</h2><h4 id="4-1-无极限"><a href="#4-1-无极限" class="headerlink" title="4.1 无极限"></a>4.1 无极限</h4><p>$\displaystyle\lim_{x \to 0}{\frac{1}{x}}sin\frac{1}{x}$ 不存在</p>
-<p>$\displaystyle\lim_{x \to \infty}e^x$ 需分类讨论，因为$\displaystyle\lim_{x \to -\infty}e^x&#x3D;0$ ，$\displaystyle\lim_{x \to +\infty}e^x&#x3D;\infty$</p>
+<p>$\displaystyle\lim_{x \to \infty}e^x$ 需分类讨论，因为$\displaystyle\lim_{x \to -\infty}e^x=0$ ，$\displaystyle\lim_{x \to +\infty}e^x=\infty$</p>
 <h4 id="4-2-无穷小量"><a href="#4-2-无穷小量" class="headerlink" title="4.2 无穷小量"></a>4.2 无穷小量</h4><p>无穷小量乘以有界量等于无穷小量</p>
-<p>例如：$\displaystyle\lim_{x \to 0}{x}sin\frac{1}{x}&#x3D;0$ ，$\displaystyle\lim_{x \to \infty}{\frac{1}{x}}sin\frac{1}{x}&#x3D;0$</p>
-<h4 id="4-3-注意-frac-sinx-x-的极限"><a href="#4-3-注意-frac-sinx-x-的极限" class="headerlink" title="4.3 注意 $\frac{sinx}{x}$ 的极限"></a>4.3 注意 $\frac{sinx}{x}$ 的极限</h4><p>$\displaystyle\lim_{x \to 0}\frac{sinx}{x}&#x3D;1$ （等价无穷小）</p>
-<p>$\displaystyle\lim_{x \to \infty}\frac{sinx}{x}&#x3D;0$ （无穷小量与有界量）</p>
+<p>例如：$\displaystyle\lim_{x \to 0}{x}sin\frac{1}{x}=0$ ，$\displaystyle\lim_{x \to \infty}{\frac{1}{x}}sin\frac{1}{x}=0$</p>
+<h4 id="4-3-注意-frac-sinx-x-的极限"><a href="#4-3-注意-frac-sinx-x-的极限" class="headerlink" title="4.3 注意 $\frac{sinx}{x}$ 的极限"></a>4.3 注意 $\frac{sinx}{x}$ 的极限</h4><p>$\displaystyle\lim_{x \to 0}\frac{sinx}{x}=1$ （等价无穷小）</p>
+<p>$\displaystyle\lim_{x \to \infty}\frac{sinx}{x}=0$ （无穷小量与有界量）</p>
 <h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h2><h4 id="5-1-泰勒公式"><a href="#5-1-泰勒公式" class="headerlink" title="5.1 泰勒公式"></a>5.1 泰勒公式</h4><p>泰勒公式中常用的是 $x_0＝ 0$ 时候的麦克劳林公式，这就说明题目应该是 $x$ 的极限趋于0这一类，既然是这一类，一般常常会和洛必达法则一起考，也就是不定式极限，但是有一些不定式求导后仍然十分复杂，这时候就要考虑用麦克劳林公式把它转换成多项式的形式。</p>
 <h4 id="5-2-等价无穷小"><a href="#5-2-等价无穷小" class="headerlink" title="5.2 等价无穷小"></a>5.2 等价无穷小</h4><ol>
 <li><p>被代换的量，在取极限的时候极限值为0；</p>
@@ -219,7 +273,7 @@
 </li>
 </ol>
 <h4 id="5-3-洛必达法则"><a href="#5-3-洛必达法则" class="headerlink" title="5.3 洛必达法则"></a>5.3 洛必达法则</h4><ol>
-<li><p>遇到形如 $\displaystyle\lim_{x \to c}\frac{f(x)}{g(x)}$ 的式子，且 $\displaystyle\lim_{x \to c}{f(x)}&#x3D;\lim_{x \to c}{g(x)}&#x3D;0$ 或 $\infty$，即 $\frac{0}{0}$ 或 $\frac{\infty}{\infty}$型，可考虑洛必达法则。</p>
+<li><p>遇到形如 $\displaystyle\lim_{x \to c}\frac{f(x)}{g(x)}$ 的式子，且 $\displaystyle\lim_{x \to c}{f(x)}=\lim_{x \to c}{g(x)}=0$ 或 $\infty$，即 $\frac{0}{0}$ 或 $\frac{\infty}{\infty}$型，可考虑洛必达法则。</p>
 </li>
 <li><p>如果遇到形如 $\displaystyle\lim_{x \to c}f(x)g(x)$ 的式子，观察是否 $\displaystyle\lim_{x \to c}f(x) \to 0$ 且 $\displaystyle\lim_{x \to c}g(x) \to \infty$，如是，可考虑 $\displaystyle\lim_{x \to c}\frac{f(x)}{\frac{1}{g(x)}}$ （$\frac{0}{0}$ 型）</p>
 </li>
@@ -228,12 +282,12 @@
 <li>如果遇到幂函数求极限，首先考虑将幂函数转换成指数形式</li>
 </ol>
 <p>例如： $x^x$ 可以转换成 $e^{xlnx}$，求 $xlnx$ 的极限即可</p>
-<ol start="2">
+<ol>
 <li>注意 $1^{\infty}$ 型，即底数极限为1，指数极限为 $\infty$</li>
 </ol>
-<p>例如：$\displaystyle\lim_{x \to \infty}(\frac{1+x}{x})^{2x}&#x3D;\displaystyle\lim_{x \to \infty}(1+\frac{1}{x})^{x*2}&#x3D;e^2$ </p>
-<ol start="3">
-<li><strong>不要忘记 $e$ ！！！</strong></li>
+<p>例如：$\displaystyle\lim_{x \to \infty}(\frac{1+x}{x})^{2x}=\displaystyle\lim_{x \to \infty}(1+\frac{1}{x})^{x*2}=e^2$ </p>
+<ol>
+<li><strong>不要忘记 $e$ ！！！</strong> </li>
 </ol>
 
     </div>
