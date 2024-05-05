@@ -285,7 +285,7 @@ mjx-container[display="true"] + br {
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-05-05 13:17:24 / Modified: 13:48:10" itemprop="dateCreated datePublished" datetime="2024-05-05T13:17:24+08:00">2024-05-05</time>
+              <time title="Created: 2024-05-05 13:17:24 / Modified: 13:53:58" itemprop="dateCreated datePublished" datetime="2024-05-05T13:17:24+08:00">2024-05-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -320,9 +320,10 @@ mjx-container[display="true"] + br {
 <p>④ 关联远程仓库 <code>github</code> 或 <code>gitee</code></p>
 <p>通过命令 <code>git remote add origin</code> 关联远程库，<code>add</code> 后面加上远程仓库的地址</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin 仓库地址</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com:Want595/hexo-Want595</span><br></pre></td></tr></table></figure>
 <p>⑤ 本地库内容推送到远程</p>
 <p>通过命令 <code>git pull</code> 同步并合并本地仓库到远程仓库</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git pull --rebase origin main	# 如果远程仓库有README.md文件，执行该语句</span><br><span class="line">git push -u origin main			# 如果远程仓库为空，执行该语句</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git pull --rebase origin main	# 如果远程仓库有文件，执行该语句</span><br><span class="line">git push -u origin main			# 如果远程仓库为空，执行该语句</span><br></pre></td></tr></table></figure>
 <p>使用 git push 命令，实际上是把当前分支 <code>main</code> 推送到远程仓库。执行此命令后会要求输入用户名、密码，验证通过后即开始上传，如果在之前本地初始化 <code>git</code> 设置了名称或者邮箱，这一步就不会要求输入，会直接上传。</p>
 <p>⭐ 如遇报错 <code>error:error: src refspec main does not match any/ error: failed to push some refs to</code> </p>
 <ul>
