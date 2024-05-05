@@ -28,7 +28,7 @@
 <meta property="og:description" content="1.首次提交① 初始化命令 通过命令 git init 把这个目录变成 git 可以管理的仓库 1git init ② 将文件添加到暂存区 通过命令 git add . 将所有文件添加到暂存区，注意后面的小数点“.”，意思是添加当前目录下的所有文件，如果需添加指定文件或文件夹，可以在 git add 命令后面直接加上其名称 1git add .  ③ 把文件提交到本地仓库  通过命令 git co">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-05-05T05:17:24.000Z">
-<meta property="article:modified_time" content="2024-05-05T06:02:25.267Z">
+<meta property="article:modified_time" content="2024-05-05T06:11:07.917Z">
 <meta property="article:author" content="junwei">
 <meta name="twitter:card" content="summary">
 
@@ -175,7 +175,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-05-05 13:17:24 / Modified: 14:02:25" itemprop="dateCreated datePublished" datetime="2024-05-05T13:17:24+08:00">2024-05-05</time>
+              <time title="Created: 2024-05-05 13:17:24 / Modified: 14:11:07" itemprop="dateCreated datePublished" datetime="2024-05-05T13:17:24+08:00">2024-05-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,8 +224,7 @@
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -m master main</span><br></pre></td></tr></table></figure>
 <h5 id="2-后续更新提交"><a href="#2-后续更新提交" class="headerlink" title="2.后续更新提交"></a>2.后续更新提交</h5><p>依次执行以下命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset			# 清空缓存区（可选）</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .        			# 将修改后的代码添加到暂存区（注意空格）</span><br><span class="line">git commit -m &quot;xxxx&quot;        # 将修改后的代码提交到本地仓库，并注释修改了什么内容</span><br><span class="line">git push origin main        # 本地仓库内容推送到远程仓库</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .        			# 将修改后的代码添加到暂存区（注意空格）</span><br><span class="line">git commit -m &quot;xxxx&quot;        # 将修改后的代码提交到本地仓库，并注释修改了什么内容</span><br><span class="line">git push origin main     # 本地仓库内容推送到远程仓库</span><br></pre></td></tr></table></figure>
 <h5 id="3-新建、查看、切换、推送分支"><a href="#3-新建、查看、切换、推送分支" class="headerlink" title="3.新建、查看、切换、推送分支"></a>3.新建、查看、切换、推送分支</h5><p>① 新建分支 </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名称</span><br></pre></td></tr></table></figure>
 <p>② 查看分支</p>
@@ -234,6 +233,8 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 目标分支名</span><br></pre></td></tr></table></figure>
 <p>④ 推送分支</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin 目标分支名</span><br></pre></td></tr></table></figure>
+<h5 id="4-清空本地仓库"><a href="#4-清空本地仓库" class="headerlink" title="4.清空本地仓库"></a>4.清空本地仓库</h5><p>如果你想要完全清空本地仓库，包括所有提交记录、分支等，可以删除 <code>.git</code> 目录。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf .git</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -311,7 +312,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E9%A6%96%E6%AC%A1%E6%8F%90%E4%BA%A4"><span class="nav-number">1.</span> <span class="nav-text">1.首次提交</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%90%8E%E7%BB%AD%E6%9B%B4%E6%96%B0%E6%8F%90%E4%BA%A4"><span class="nav-number">2.</span> <span class="nav-text">2.后续更新提交</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E6%96%B0%E5%BB%BA%E3%80%81%E6%9F%A5%E7%9C%8B%E3%80%81%E5%88%87%E6%8D%A2%E3%80%81%E6%8E%A8%E9%80%81%E5%88%86%E6%94%AF"><span class="nav-number">3.</span> <span class="nav-text">3.新建、查看、切换、推送分支</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E9%A6%96%E6%AC%A1%E6%8F%90%E4%BA%A4"><span class="nav-number">1.</span> <span class="nav-text">1.首次提交</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%90%8E%E7%BB%AD%E6%9B%B4%E6%96%B0%E6%8F%90%E4%BA%A4"><span class="nav-number">2.</span> <span class="nav-text">2.后续更新提交</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E6%96%B0%E5%BB%BA%E3%80%81%E6%9F%A5%E7%9C%8B%E3%80%81%E5%88%87%E6%8D%A2%E3%80%81%E6%8E%A8%E9%80%81%E5%88%86%E6%94%AF"><span class="nav-number">3.</span> <span class="nav-text">3.新建、查看、切换、推送分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E6%B8%85%E7%A9%BA%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="nav-number">4.</span> <span class="nav-text">4.清空本地仓库</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
