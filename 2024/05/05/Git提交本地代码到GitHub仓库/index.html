@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1.首次提交① 初始化命令 通过命令 git init 把这个目录变成 git 可以管理的仓库 1git init ② 将文件添加到暂存区 通过命令 git add . 将所有文件添加到暂存区，注意后面的小数点“.”，意思是添加当前目录下的所有文件，如果需添加指定文件或文件夹，可以在 git add 命令后面直接加上其名称 1git add .  ③ 把文件提交到本地仓库  通过命令 git co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git提交本地代码到GitHub仓库">
+<meta property="og:url" content="http://example.com/2024/05/05/Git%E6%8F%90%E4%BA%A4%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%88%B0GitHub%E4%BB%93%E5%BA%93/index.html">
+<meta property="og:site_name" content="Want595">
+<meta property="og:description" content="1.首次提交① 初始化命令 通过命令 git init 把这个目录变成 git 可以管理的仓库 1git init ② 将文件添加到暂存区 通过命令 git add . 将所有文件添加到暂存区，注意后面的小数点“.”，意思是添加当前目录下的所有文件，如果需添加指定文件或文件夹，可以在 git add 命令后面直接加上其名称 1git add .  ③ 把文件提交到本地仓库  通过命令 git co">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-05-05T05:17:24.000Z">
+<meta property="article:modified_time" content="2024-05-05T06:23:00.209Z">
+<meta property="article:author" content="junwei">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2024/05/05/Git%E6%8F%90%E4%BA%A4%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%88%B0GitHub%E4%BB%93%E5%BA%93/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Git提交本地代码到GitHub仓库 | Want595</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Want595" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Want595</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">温特兔</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/05/Git%E6%8F%90%E4%BA%A4%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%88%B0GitHub%E4%BB%93%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="junwei">
+      <meta itemprop="description" content="个人学习笔记">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Want595">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Git提交本地代码到GitHub仓库
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-05-05 13:17:24 / 修改时间：14:23:00" itemprop="dateCreated datePublished" datetime="2024-05-05T13:17:24+08:00">2024-05-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">Git笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h5 id="1-首次提交"><a href="#1-首次提交" class="headerlink" title="1.首次提交"></a>1.首次提交</h5><p>① 初始化命令</p>
+<p>通过命令 <code>git init</code> 把这个目录变成 <code>git</code> 可以管理的仓库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>② 将文件添加到暂存区</p>
+<p>通过命令 <code>git add .</code> 将所有文件添加到暂存区，注意后面的小数点“.”，意思是添加当前目录下的所有文件，如果需添加指定文件或文件夹，可以在 <code>git add</code> 命令后面直接加上其名称</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add . </span><br></pre></td></tr></table></figure>
+<p>③ 把文件提交到本地仓库 </p>
+<p>通过命令 <code>git commit</code> 将文件提交到本地仓库，引号用来描述你本次提交的代码都做了哪些操作</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;xxxx&quot;</span><br></pre></td></tr></table></figure>
+<p>④ 关联远程仓库 <code>github</code> 或 <code>gitee</code></p>
+<p>通过命令 <code>git remote add origin</code> 关联远程库，<code>add</code> 后面加上远程仓库的地址</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin 仓库地址</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com:Want595/hexo-Want595</span><br></pre></td></tr></table></figure>
+<p>⑤ 本地库内容推送到远程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git pull --rebase origin main	# 如果远程仓库有文件，先执行该语句</span><br><span class="line">git push -u origin main			</span><br></pre></td></tr></table></figure>
+<p>使用 git push 命令，实际上是把当前分支 <code>main</code> 推送到远程仓库。执行此命令后会要求输入用户名、密码，验证通过后即开始上传，如果在之前本地初始化 <code>git</code> 设置了名称或者邮箱，这一步就不会要求输入，会直接上传。</p>
+<p>⭐ 如遇报错 <code>error:error: src refspec main does not match any/ error: failed to push some refs to</code> </p>
+<ul>
+<li><p>错误原因：<code>Github</code> 工程默认名从 <code>master</code> 变成了 <code>main</code></p>
+</li>
+<li><p>解决方法：请把本地的 <code>master</code> 仓库名称修改为远端的 <code>main</code>，命令如下</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -m master main</span><br></pre></td></tr></table></figure>
+<h5 id="2-后续更新提交"><a href="#2-后续更新提交" class="headerlink" title="2.后续更新提交"></a>2.后续更新提交</h5><p>依次执行以下命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .        			# 将修改后的代码添加到暂存区（注意空格）</span><br><span class="line">git commit -m &quot;xxxx&quot;        # 将修改后的代码提交到本地仓库，并注释修改了什么内容</span><br><span class="line">git push origin main     # 本地仓库内容推送到远程仓库</span><br></pre></td></tr></table></figure>
+<h5 id="3-新建、查看、切换、推送分支"><a href="#3-新建、查看、切换、推送分支" class="headerlink" title="3.新建、查看、切换、推送分支"></a>3.新建、查看、切换、推送分支</h5><p>① 新建分支 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名称</span><br></pre></td></tr></table></figure>
+<p>② 查看分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+<p>③ 切换分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 目标分支名</span><br></pre></td></tr></table></figure>
+<p>④ 推送分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin 目标分支名</span><br></pre></td></tr></table></figure>
+<h5 id="4-清空本地仓库"><a href="#4-清空本地仓库" class="headerlink" title="4.清空本地仓库"></a>4.清空本地仓库</h5><p>如果你想要完全清空本地仓库，包括所有提交记录、分支等，可以删除 <code>.git</code> 目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf .git</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/05/05/Hexo%E9%85%8D%E7%BD%AEREADME%E6%96%87%E4%BB%B6/" rel="prev" title="Hexo配置README文件">
+      <i class="fa fa-chevron-left"></i> Hexo配置README文件
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/05/05/%E6%B1%82%E9%97%B4%E6%96%AD%E7%82%B9%E9%97%AE%E9%A2%98/" rel="next" title="求间断点问题">
+      求间断点问题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E9%A6%96%E6%AC%A1%E6%8F%90%E4%BA%A4"><span class="nav-number">1.</span> <span class="nav-text">1.首次提交</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%90%8E%E7%BB%AD%E6%9B%B4%E6%96%B0%E6%8F%90%E4%BA%A4"><span class="nav-number">2.</span> <span class="nav-text">2.后续更新提交</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E6%96%B0%E5%BB%BA%E3%80%81%E6%9F%A5%E7%9C%8B%E3%80%81%E5%88%87%E6%8D%A2%E3%80%81%E6%8E%A8%E9%80%81%E5%88%86%E6%94%AF"><span class="nav-number">3.</span> <span class="nav-text">3.新建、查看、切换、推送分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E6%B8%85%E7%A9%BA%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="nav-number">4.</span> <span class="nav-text">4.清空本地仓库</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">junwei</p>
+  <div class="site-description" itemprop="description">个人学习笔记</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">junwei</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
