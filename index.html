@@ -282,7 +282,7 @@ mjx-container[display="true"] + br {
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-05-05 09:24:46 / Modified: 09:41:59" itemprop="dateCreated datePublished" datetime="2024-05-05T09:24:46+08:00">2024-05-05</time>
+              <time title="Created: 2024-05-05 09:24:46 / Modified: 09:49:17" itemprop="dateCreated datePublished" datetime="2024-05-05T09:24:46+08:00">2024-05-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -305,14 +305,15 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-          <h5 id="1-更换Hexo的markdown渲染引擎"><a href="#1-更换Hexo的markdown渲染引擎" class="headerlink" title="1.更换Hexo的markdown渲染引擎"></a>1.更换Hexo的markdown渲染引擎</h5><p>hexo-renderer-kramed引擎是在默认的渲染引擎hexo-renderer-marked的基础上修改了一些bug，两者比较接近，也比较轻量级。</p>
+          <h5 id="1-安装公式插件"><a href="#1-安装公式插件" class="headerlink" title="1.安装公式插件"></a>1.安装公式插件</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-filter-mathjax --save</span><br></pre></td></tr></table></figure>
+<h5 id="2-更换渲染引擎"><a href="#2-更换渲染引擎" class="headerlink" title="2.更换渲染引擎"></a>2.更换渲染引擎</h5><p>hexo-renderer-kramed引擎是在默认的渲染引擎hexo-renderer-marked的基础上修改了一些bug，两者比较接近，也比较轻量级。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save		# 卸载hexo-renderer-marked</span><br><span class="line">npm install hexo-renderer-kramed --save			# 安装hexo-renderer-kramed</span><br></pre></td></tr></table></figure>
-<h5 id="2-解决语义冲突"><a href="#2-解决语义冲突" class="headerlink" title="2.解决语义冲突"></a>2.解决语义冲突</h5><p>打开文件 <code>node_modules\kramed\lib\rules\inline.js</code></p>
+<h5 id="3-解决语义冲突"><a href="#3-解决语义冲突" class="headerlink" title="3.解决语义冲突"></a>3.解决语义冲突</h5><p>打开文件 <code>node_modules\kramed\lib\rules\inline.js</code></p>
 <p>将 <strong>escape</strong> 的内容注释掉，替换成 <code>escape: /^\\([`*\[\]()#$+\-.!_&gt;])/</code><br>        将 <strong>em</strong> 的内容注释掉，替换成 <code>em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</code></p>
-<h5 id="3-在next主题中开启mathjax开关"><a href="#3-在next主题中开启mathjax开关" class="headerlink" title="3.在next主题中开启mathjax开关"></a>3.在next主题中开启mathjax开关</h5><p>打开文件 <code>themes\hexo-theme-next\_config</code></p>
+<h5 id="4-在主题中开启mathjax开关"><a href="#4-在主题中开启mathjax开关" class="headerlink" title="4.在主题中开启mathjax开关"></a>4.在主题中开启mathjax开关</h5><p>打开文件 <code>themes\hexo-theme-next\_config</code></p>
 <p>修改配置 <strong>math</strong> </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Math Formulas Render Support</span></span><br><span class="line">math:</span><br><span class="line">  <span class="comment"># Default (true) will load mathjax / katex script on demand.</span></span><br><span class="line">  <span class="comment"># That is it only render those page which has `mathjax: true` in Front-matter.</span></span><br><span class="line">  <span class="comment"># If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.</span></span><br><span class="line">  per_page: true</span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-renderer-pandoc (or hexo-renderer-kramed) required for full MathJax support.</span></span><br><span class="line">  mathjax:</span><br><span class="line">    enable: true</span><br><span class="line">    <span class="comment"># See: https://mhchem.github.io/MathJax-mhchem/</span></span><br><span class="line">    mhchem: true</span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-renderer-markdown-it-plus (or hexo-renderer-markdown-it with markdown-it-katex plugin) required for full Katex support.</span></span><br><span class="line">  katex:</span><br><span class="line">    enable: true</span><br><span class="line">    <span class="comment"># See: https://github.com/KaTeX/KaTeX/tree/master/contrib/copy-tex</span></span><br><span class="line">    copy_tex: true</span><br></pre></td></tr></table></figure>
-<h5 id="4-在需要用到数学公式的md文件中启用mathjax"><a href="#4-在需要用到数学公式的md文件中启用mathjax" class="headerlink" title="4.在需要用到数学公式的md文件中启用mathjax"></a>4.在需要用到数学公式的md文件中启用mathjax</h5><p>例如</p>
+<h5 id="5-在md文件中启用mathjax"><a href="#5-在md文件中启用mathjax" class="headerlink" title="5.在md文件中启用mathjax"></a>5.在md文件中启用mathjax</h5><p>例如</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: Hexo-next主题支持数学公式</span><br><span class="line">date: 2024-05-05 09:24:46</span><br><span class="line">tags:notes</span><br><span class="line">mathjax: true</span><br></pre></td></tr></table></figure>
 
       
@@ -347,7 +348,7 @@ mjx-container[display="true"] + br {
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/05/04/jixian/" class="post-title-link" itemprop="url">jixian</a>
+            <a href="/2024/05/04/jixian/" class="post-title-link" itemprop="url">求极限问题</a>
         </h2>
 
         <div class="post-meta">
@@ -364,7 +365,7 @@ mjx-container[display="true"] + br {
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-05 09:43:31" itemprop="dateModified" datetime="2024-05-05T09:43:31+08:00">2024-05-05</time>
+                <time title="Modified: 2024-05-05 09:49:34" itemprop="dateModified" datetime="2024-05-05T09:49:34+08:00">2024-05-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">

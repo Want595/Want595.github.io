@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1.更换Hexo的markdown渲染引擎hexo-renderer-kramed引擎是在默认的渲染引擎hexo-renderer-marked的基础上修改了一些bug，两者比较接近，也比较轻量级。 12npm uninstall hexo-renderer-marked --save		# 卸载hexo-renderer-markednpm install hexo-renderer-krame">
+  <meta name="description" content="1.安装公式插件1npm install hexo-filter-mathjax --save 2.更换渲染引擎hexo-renderer-kramed引擎是在默认的渲染引擎hexo-renderer-marked的基础上修改了一些bug，两者比较接近，也比较轻量级。 12npm uninstall hexo-renderer-marked --save		# 卸载hexo-renderer-ma">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo-next主题支持数学公式">
 <meta property="og:url" content="http://example.com/2024/05/05/notes/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1.更换Hexo的markdown渲染引擎hexo-renderer-kramed引擎是在默认的渲染引擎hexo-renderer-marked的基础上修改了一些bug，两者比较接近，也比较轻量级。 12npm uninstall hexo-renderer-marked --save		# 卸载hexo-renderer-markednpm install hexo-renderer-krame">
+<meta property="og:description" content="1.安装公式插件1npm install hexo-filter-mathjax --save 2.更换渲染引擎hexo-renderer-kramed引擎是在默认的渲染引擎hexo-renderer-marked的基础上修改了一些bug，两者比较接近，也比较轻量级。 12npm uninstall hexo-renderer-marked --save		# 卸载hexo-renderer-ma">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-05-05T01:24:46.000Z">
-<meta property="article:modified_time" content="2024-05-05T01:41:59.160Z">
+<meta property="article:modified_time" content="2024-05-05T01:49:17.624Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -174,7 +174,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-05-05 09:24:46 / Modified: 09:41:59" itemprop="dateCreated datePublished" datetime="2024-05-05T09:24:46+08:00">2024-05-05</time>
+              <time title="Created: 2024-05-05 09:24:46 / Modified: 09:49:17" itemprop="dateCreated datePublished" datetime="2024-05-05T09:24:46+08:00">2024-05-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -197,14 +197,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h5 id="1-更换Hexo的markdown渲染引擎"><a href="#1-更换Hexo的markdown渲染引擎" class="headerlink" title="1.更换Hexo的markdown渲染引擎"></a>1.更换Hexo的markdown渲染引擎</h5><p>hexo-renderer-kramed引擎是在默认的渲染引擎hexo-renderer-marked的基础上修改了一些bug，两者比较接近，也比较轻量级。</p>
+        <h5 id="1-安装公式插件"><a href="#1-安装公式插件" class="headerlink" title="1.安装公式插件"></a>1.安装公式插件</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-filter-mathjax --save</span><br></pre></td></tr></table></figure>
+<h5 id="2-更换渲染引擎"><a href="#2-更换渲染引擎" class="headerlink" title="2.更换渲染引擎"></a>2.更换渲染引擎</h5><p>hexo-renderer-kramed引擎是在默认的渲染引擎hexo-renderer-marked的基础上修改了一些bug，两者比较接近，也比较轻量级。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save		# 卸载hexo-renderer-marked</span><br><span class="line">npm install hexo-renderer-kramed --save			# 安装hexo-renderer-kramed</span><br></pre></td></tr></table></figure>
-<h5 id="2-解决语义冲突"><a href="#2-解决语义冲突" class="headerlink" title="2.解决语义冲突"></a>2.解决语义冲突</h5><p>打开文件 <code>node_modules\kramed\lib\rules\inline.js</code></p>
+<h5 id="3-解决语义冲突"><a href="#3-解决语义冲突" class="headerlink" title="3.解决语义冲突"></a>3.解决语义冲突</h5><p>打开文件 <code>node_modules\kramed\lib\rules\inline.js</code></p>
 <p>将 <strong>escape</strong> 的内容注释掉，替换成 <code>escape: /^\\([`*\[\]()#$+\-.!_&gt;])/</code><br>        将 <strong>em</strong> 的内容注释掉，替换成 <code>em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</code></p>
-<h5 id="3-在next主题中开启mathjax开关"><a href="#3-在next主题中开启mathjax开关" class="headerlink" title="3.在next主题中开启mathjax开关"></a>3.在next主题中开启mathjax开关</h5><p>打开文件 <code>themes\hexo-theme-next\_config</code></p>
+<h5 id="4-在主题中开启mathjax开关"><a href="#4-在主题中开启mathjax开关" class="headerlink" title="4.在主题中开启mathjax开关"></a>4.在主题中开启mathjax开关</h5><p>打开文件 <code>themes\hexo-theme-next\_config</code></p>
 <p>修改配置 <strong>math</strong> </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Math Formulas Render Support</span></span><br><span class="line">math:</span><br><span class="line">  <span class="comment"># Default (true) will load mathjax / katex script on demand.</span></span><br><span class="line">  <span class="comment"># That is it only render those page which has `mathjax: true` in Front-matter.</span></span><br><span class="line">  <span class="comment"># If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.</span></span><br><span class="line">  per_page: true</span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-renderer-pandoc (or hexo-renderer-kramed) required for full MathJax support.</span></span><br><span class="line">  mathjax:</span><br><span class="line">    enable: true</span><br><span class="line">    <span class="comment"># See: https://mhchem.github.io/MathJax-mhchem/</span></span><br><span class="line">    mhchem: true</span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-renderer-markdown-it-plus (or hexo-renderer-markdown-it with markdown-it-katex plugin) required for full Katex support.</span></span><br><span class="line">  katex:</span><br><span class="line">    enable: true</span><br><span class="line">    <span class="comment"># See: https://github.com/KaTeX/KaTeX/tree/master/contrib/copy-tex</span></span><br><span class="line">    copy_tex: true</span><br></pre></td></tr></table></figure>
-<h5 id="4-在需要用到数学公式的md文件中启用mathjax"><a href="#4-在需要用到数学公式的md文件中启用mathjax" class="headerlink" title="4.在需要用到数学公式的md文件中启用mathjax"></a>4.在需要用到数学公式的md文件中启用mathjax</h5><p>例如</p>
+<h5 id="5-在md文件中启用mathjax"><a href="#5-在md文件中启用mathjax" class="headerlink" title="5.在md文件中启用mathjax"></a>5.在md文件中启用mathjax</h5><p>例如</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: Hexo-next主题支持数学公式</span><br><span class="line">date: 2024-05-05 09:24:46</span><br><span class="line">tags:notes</span><br><span class="line">mathjax: true</span><br></pre></td></tr></table></figure>
 
     </div>
@@ -221,8 +222,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2024/05/04/jixian/" rel="prev" title="jixian">
-      <i class="fa fa-chevron-left"></i> jixian
+    <a href="/2024/05/04/jixian/" rel="prev" title="求极限问题">
+      <i class="fa fa-chevron-left"></i> 求极限问题
     </a></div>
       <div class="post-nav-item"></div>
     </div>
@@ -283,7 +284,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E6%9B%B4%E6%8D%A2Hexo%E7%9A%84markdown%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E"><span class="nav-number">1.</span> <span class="nav-text">1.更换Hexo的markdown渲染引擎</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E8%A7%A3%E5%86%B3%E8%AF%AD%E4%B9%89%E5%86%B2%E7%AA%81"><span class="nav-number">2.</span> <span class="nav-text">2.解决语义冲突</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E5%9C%A8next%E4%B8%BB%E9%A2%98%E4%B8%AD%E5%BC%80%E5%90%AFmathjax%E5%BC%80%E5%85%B3"><span class="nav-number">3.</span> <span class="nav-text">3.在next主题中开启mathjax开关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E5%9C%A8%E9%9C%80%E8%A6%81%E7%94%A8%E5%88%B0%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84md%E6%96%87%E4%BB%B6%E4%B8%AD%E5%90%AF%E7%94%A8mathjax"><span class="nav-number">4.</span> <span class="nav-text">4.在需要用到数学公式的md文件中启用mathjax</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85%E5%85%AC%E5%BC%8F%E6%8F%92%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">1.安装公式插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E6%9B%B4%E6%8D%A2%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E"><span class="nav-number">2.</span> <span class="nav-text">2.更换渲染引擎</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E8%A7%A3%E5%86%B3%E8%AF%AD%E4%B9%89%E5%86%B2%E7%AA%81"><span class="nav-number">3.</span> <span class="nav-text">3.解决语义冲突</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E5%9C%A8%E4%B8%BB%E9%A2%98%E4%B8%AD%E5%BC%80%E5%90%AFmathjax%E5%BC%80%E5%85%B3"><span class="nav-number">4.</span> <span class="nav-text">4.在主题中开启mathjax开关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E5%9C%A8md%E6%96%87%E4%BB%B6%E4%B8%AD%E5%90%AF%E7%94%A8mathjax"><span class="nav-number">5.</span> <span class="nav-text">5.在md文件中启用mathjax</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
