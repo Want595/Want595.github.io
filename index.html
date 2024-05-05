@@ -260,6 +260,151 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/05/%E6%B1%82%E5%AF%BC%E6%95%B0%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="junwei">
+      <meta itemprop="description" content="个人学习笔记">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Want595">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/05/05/%E6%B1%82%E5%AF%BC%E6%95%B0%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">求导数问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-05-05 15:30:07 / Modified: 16:47:06" itemprop="dateCreated datePublished" datetime="2024-05-05T15:30:07+08:00">2024-05-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%AB%98%E6%95%B0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">高数笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-利用定义求导数"><a href="#1-利用定义求导数" class="headerlink" title="1.利用定义求导数"></a>1.利用定义求导数</h2><p><strong>导数定义</strong></p>
+<script type="math/tex; mode=display">
+\begin{flalign}
+&f^{'}(x_0)= \lim_{\Delta x \to 0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}=\lim_{x \to x_0}\frac{f(x)-f(x_0)}{x-x_0}&
+\end{flalign}</script><ul>
+<li>该极限为 $\frac{0}{0}$ 型</li>
+<li>分子的后一项为 $f(x_0)$</li>
+</ul>
+<p><strong>应用场景</strong></p>
+<ul>
+<li>被求导函数过于复杂</li>
+<li>分段函数分段点必须用导数定义求导</li>
+</ul>
+<h2 id="2-基本导数公式"><a href="#2-基本导数公式" class="headerlink" title="2.基本导数公式"></a>2.基本导数公式</h2><ul>
+<li><strong>三角函数</strong></li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{flalign}
+&(sinx)^{'}=cosx\\
+&(cosx)^{'}=-sinx\\
+&(tanx)^{'}=sec^2x\\
+&(cotx)^{'}=-csc^2x\\
+&(secx)^{'}=secxtanx\\
+&(cscx)^{'}=-cscxcotx&
+\end{flalign}</script><ul>
+<li><strong>反三角函数</strong></li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{flalign}
+&(arcsinx)^{'}=\frac{1}{\sqrt{1-x^2}}\\
+&(arccosx)^{'}=-\frac{1}{\sqrt{1-x^2}}\\
+&(arctanx)^{'}=\frac{1}{1+x^2}\\
+&(arccotx)^{'}=-\frac{1}{1+x^2}\\
+&(arcsecx)^{'}=\frac{1}{|x|\sqrt{x^2-1}},|x|>1\\
+&(arccscx)^{'}=-\frac{1}{|x|\sqrt{x^2-1}},|x|>1&
+\end{flalign}</script><h2 id="3-复合函数求导"><a href="#3-复合函数求导" class="headerlink" title="3.复合函数求导"></a>3.复合函数求导</h2><p>对 $x$ 和 $y$ 同时求导，再移项</p>
+<p>例如对于 $y^2 = 2px$，先求导 $2yy^{‘} = 2p$，后移向 $y^{‘} = \frac{p}{y}$</p>
+<h2 id="4-参数方程求导"><a href="#4-参数方程求导" class="headerlink" title="4.参数方程求导"></a>4.参数方程求导</h2><p>分别求 $dx$ 和 $dy$，然后求 $\frac{dy}{dx}$</p>
+<p>例如对于 $\begin{cases}x=sint \\y=cos2t \end{cases}$，求 $y^{‘}$</p>
+<p>求解步骤：$dx = cost$，$dy=-2sin2t$，$y^{‘}=\frac{dy}{dx}=-4sint$</p>
+<h2 id="5-分段函数求导"><a href="#5-分段函数求导" class="headerlink" title="5.分段函数求导"></a>5.分段函数求导</h2><ul>
+<li><strong>题型1</strong></li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{flalign}
+&f(x)=\begin{cases}
+\varphi_1(x), &x\neq x_0\\
+\varphi_2(x), &x=x_0
+\end{cases}&
+\end{flalign}</script><p>当 $x\neq x_0$ 时，$f^{‘}(x)=\varphi_1^{‘}(x)$</p>
+<p>当 $x=x_0$ 时，用导数定义求 $f(x)$ 在点 $x_0$ 处的左右极限，即 $f_{+}^{‘}(x)$ 和 $f_{-}^{‘}(x)$</p>
+<p>$f_{+}^{‘}(x)=\displaystyle\lim_{x \to x_0^{+}}\frac{\varphi_1(x)-\varphi_2(x_0)}{x-x_0}$</p>
+<p>$f_{-}^{‘}(x)=\displaystyle\lim_{x \to x_0^{-}}\frac{\varphi_1(x)-\varphi_2(x_0)}{x-x_0}$</p>
+<p>如果左极限 = 右极限，则导数存在，否则导数不存在</p>
+<ul>
+<li><strong>题型2</strong></li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{flalign}
+&f(x)=\begin{cases}
+\varphi_1(x), &x< x_0\\
+\varphi_2(x), &x\geq x_0
+\end{cases}&
+\end{flalign}</script><p>当 $x&lt;x_0$ 时，$f^{‘}(x)=\varphi_1^{‘}(x)$</p>
+<p>当 $x&gt;x_0$ 时，$f^{‘}(x)=\varphi_2^{‘}(x)$</p>
+<p>当 $x=x_0$ 时，求导数的左右极限，如果左极限 = 右极限，则导数存在，否则导数不存在</p>
+<ul>
+<li><strong>题型3</strong></li>
+</ul>
+<p>如果 $f(x)$ 可导，求参数 $a$ 和 $b$ 的值</p>
+<p>求解步骤：</p>
+<p>① $f_{+}^{‘}(x)=f_{-}^{‘}(x)$，即用导数定义求出的两个极限的值相等</p>
+<p>② $\displaystyle\lim_{x \to x_0^{+}}f(x)=\lim_{x \to x_0^{-}}f(x)$，即两个导数的极限值相等</p>
+<p>一共会有 <strong>4</strong> 个式子，解方程即可</p>
+<h2 id="6-变限积分函数求导"><a href="#6-变限积分函数求导" class="headerlink" title="6.变限积分函数求导"></a>6.变限积分函数求导</h2><ul>
+<li>注意负号</li>
+<li>注意上下限</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/05/%E6%B1%82%E6%B8%90%E8%BF%91%E7%BA%BF%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -998,7 +1143,7 @@ e^x &= e^0+(e^0)^{'}x+\frac{1}{2}(e^0)^{''}x^2+\frac{1}{6}(e^0)^{'''}x^3+…+\fr
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
