@@ -260,6 +260,94 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/05/Hexo%E9%85%8D%E7%BD%AEREADME%E6%96%87%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="junwei">
+      <meta itemprop="description" content="个人学习笔记">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Want595">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/05/05/Hexo%E9%85%8D%E7%BD%AEREADME%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">Hexo配置README文件</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-05-05 12:43:27 / Modified: 12:49:50" itemprop="dateCreated datePublished" datetime="2024-05-05T12:43:27+08:00">2024-05-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">Hexo笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="1-引子"><a href="#1-引子" class="headerlink" title="1.引子"></a>1.引子</h5><ul>
+<li><p>执行命令 <code>hexo g</code> 之后，会把 <code>source</code> 文件里的 <code>.md</code> 格式的文件渲染为 <code>html</code> 文件并放到 <code>public</code> 下面；</p>
+</li>
+<li><p>继续执行命令 <code>hexo d</code> 之后，会把 <code>public</code> 下面的所有文件提交到对应的 <code>XXX.github.io</code> 这个仓库。</p>
+</li>
+<li><p>由于本地 <code>public</code> 文件夹里没有 <code>README.md</code> 这个文件，所以在提交 <code>public</code> 文件时，<code>github</code> 会认为你把 <code>README.md</code> 文件删掉了，同时 <code>github</code> 也会删掉仓库里的 <code>README.md</code> 文件，这就是具体的原因。</p>
+</li>
+</ul>
+<h5 id="2-解决问题"><a href="#2-解决问题" class="headerlink" title="2.解决问题"></a>2.解决问题</h5><p>① 在本地的 <code>source</code> 文件里新建一个 <code>README.md</code> 文件。</p>
+<p>② 修改 <code>Hexo</code> 根目录下的 <code>_config.yml</code> 文件，将 <code>skip_render</code> 参数的值设置为 <code>README.md</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skip_render: README.md</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>为什么需要设置这一步呢？</p>
+</li>
+<li><p>因为你执行 <code>hexo g</code> 命令时，<code>hexo</code> 会默认将 <code>source</code> 文件里的所有 <code>md</code> 文件渲染为 <code>html</code> 文件放到 <code>public</code> 中</p>
+</li>
+<li><p>同时 <code>README.md</code> 会被渲染为 <code>README.html</code> 文件放到 <code>public</code> 文件里</p>
+</li>
+<li><p>加上这个设置，就是告诉 <code>hexo</code> 的解析器，你在渲染 <code>source</code> 文件里的 <code>md</code> 文件时，跳过 <code>README.md</code> 文件</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/05/Hexo%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -636,7 +724,7 @@ e^x &= e^0+(e^0)^{'}x+\frac{1}{2}(e^0)^{''}x^2+\frac{1}{6}(e^0)^{'''}x^3+…+\fr
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
