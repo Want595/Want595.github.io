@@ -285,7 +285,7 @@ mjx-container[display="true"] + br {
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-05-05 13:17:24 / Modified: 13:44:35" itemprop="dateCreated datePublished" datetime="2024-05-05T13:17:24+08:00">2024-05-05</time>
+              <time title="Created: 2024-05-05 13:17:24 / Modified: 13:48:10" itemprop="dateCreated datePublished" datetime="2024-05-05T13:17:24+08:00">2024-05-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -323,7 +323,8 @@ mjx-container[display="true"] + br {
 <p>⑤ 本地库内容推送到远程</p>
 <p>通过命令 <code>git pull</code> 同步并合并本地仓库到远程仓库</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git pull --rebase origin main	# 如果远程仓库有README.md文件，执行该语句</span><br><span class="line">git push -u origin main			# 如果远程仓库为空，执行该语句</span><br></pre></td></tr></table></figure>
-<p>如遇报错 <code>error:error: src refspec main does not match any/ error: failed to push some refs to</code> </p>
+<p>使用 git push 命令，实际上是把当前分支 <code>main</code> 推送到远程仓库。执行此命令后会要求输入用户名、密码，验证通过后即开始上传，如果在之前本地初始化 <code>git</code> 设置了名称或者邮箱，这一步就不会要求输入，会直接上传。</p>
+<p>⭐ 如遇报错 <code>error:error: src refspec main does not match any/ error: failed to push some refs to</code> </p>
 <ul>
 <li><p>错误原因：<code>Github</code> 工程默认名从 <code>master</code> 变成了 <code>main</code></p>
 </li>
@@ -331,7 +332,6 @@ mjx-container[display="true"] + br {
 </li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -m master main</span><br></pre></td></tr></table></figure>
-<p>使用 git push 命令，实际上是把当前分支 <code>main</code> 推送到远程仓库。执行此命令后会要求输入用户名、密码，验证通过后即开始上传，如果在之前本地初始化 <code>git</code> 设置了名称或者邮箱，这一步就不会要求输入，会直接上传。</p>
 <h5 id="2-后续更新提交"><a href="#2-后续更新提交" class="headerlink" title="2.后续更新提交"></a>2.后续更新提交</h5><p>依次执行以下命令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .        			# 将修改后的代码添加到暂存区（注意空格）</span><br><span class="line">git commit -m &quot;xxxx&quot;        # 将修改后的代码提交到本地仓库，并注释修改了什么内容</span><br><span class="line">git push origin main     # 本地仓库内容推送到远程仓库</span><br></pre></td></tr></table></figure>
 <h5 id="3-新建、查看、切换、推送分支"><a href="#3-新建、查看、切换、推送分支" class="headerlink" title="3.新建、查看、切换、推送分支"></a>3.新建、查看、切换、推送分支</h5><p>① 新建分支 </p>
