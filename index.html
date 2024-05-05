@@ -257,6 +257,83 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/05/Hexo%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/05/05/Hexo%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB/" class="post-title-link" itemprop="url">Hexo添加类别与标签</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-05-05 09:52:18 / Modified: 10:02:05" itemprop="dateCreated datePublished" datetime="2024-05-05T09:52:18+08:00">2024-05-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">Hexo笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="1-生成“分类”页并添加type属性"><a href="#1-生成“分类”页并添加type属性" class="headerlink" title="1.生成“分类”页并添加type属性"></a>1.生成“分类”页并添加type属性</h5><p>打开命令行，进入博客所在文件夹。执行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+<p>打开 <code>source\categories\index.md</code> 文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">title: categories</span><br><span class="line">date: 2024-05-05 09:40:15</span><br></pre></td></tr></table></figure>
+<p>添加 <strong>type: “categories”</strong> 和 <strong>layout: “categories”</strong> 到内容中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: categories</span><br><span class="line">date: 2024-05-05 09:40:15</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">layout: &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+<p>保存并关闭文件。</p>
+<h5 id="2-给文章添加categories属性"><a href="#2-给文章添加categories属性" class="headerlink" title="2.给文章添加categories属性"></a>2.给文章添加categories属性</h5><p>打开需要添加分类的文章，为其添加 <strong>categories</strong> 属性，例如 “categories: -Hexo笔记” 可以将该文章添加到 Hexo笔记类别中<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: Hexo添加分类</span><br><span class="line">date: 2024-05-05 09:52:18</span><br><span class="line">tags:</span><br><span class="line">categories:</span><br><span class="line">- Hexo笔记</span><br></pre></td></tr></table></figure></p>
+<p>至此，成功给文章添加分类，点击首页的“分类”可以看到该分类下的所有文章。当然，只有添加了categories: xxx的文章才会被收录到首页的“分类”中。</p>
+<h5 id="3-添加tag标签"><a href="#3-添加tag标签" class="headerlink" title="3.添加tag标签"></a>3.添加tag标签</h5><p>与添加categories分类的方法一致！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/05/Hexo%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -556,7 +633,7 @@ e^x &= e^0+(e^0)^{'}x+\frac{1}{2}(e^0)^{''}x^2+\frac{1}{6}(e^0)^{'''}x^3+…+\fr
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
