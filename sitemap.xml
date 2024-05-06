@@ -112,14 +112,14 @@
 
   
   <url>
-    <loc>http://example.com/categories/Git%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://example.com/categories/Hexo%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2024-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Hexo%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://example.com/categories/Git%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2024-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
