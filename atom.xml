@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-05-06T03:32:43.382Z</updated>
+  <updated>2024-05-06T05:58:34.412Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo部署Butterfly主题</title>
+    <link href="http://example.com/2024/05/06/Hexo%E9%83%A8%E7%BD%B2Butterfly%E4%B8%BB%E9%A2%98/"/>
+    <id>http://example.com/2024/05/06/Hexo%E9%83%A8%E7%BD%B2Butterfly%E4%B8%BB%E9%A2%98/</id>
+    <published>2024-05-06T05:54:15.000Z</published>
+    <updated>2024-05-06T05:58:34.412Z</updated>
+    
+    <content type="html"><![CDATA[<p>官方文档：<a href="https://butterfly.js.org/posts/98d20436/">https://butterfly.js.org/posts/98d20436/</a></p><p>主题仓库：<a href="https://github.com/jerryc127/hexo-theme-butterfly">https://github.com/jerryc127/hexo-theme-butterfly</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;官方文档：&lt;a href=&quot;https://butterfly.js.org/posts/98d20436/&quot;&gt;https://butterfly.js.org/posts/98d20436/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;主题仓库：&lt;a href=&quot;https://github.</summary>
+      
+    
+    
+    
+    <category term="Hexo笔记" scheme="http://example.com/categories/Hexo%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>求积分问题</title>
