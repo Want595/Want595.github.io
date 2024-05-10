@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-05-06T05:58:34.412Z</updated>
+  <updated>2024-05-10T02:52:57.795Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python流星雨</title>
+    <link href="http://example.com/2024/05/10/Python%E6%B5%81%E6%98%9F%E9%9B%A8/"/>
+    <id>http://example.com/2024/05/10/Python%E6%B5%81%E6%98%9F%E9%9B%A8/</id>
+    <published>2024-05-10T02:49:47.000Z</published>
+    <updated>2024-05-10T02:52:57.795Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="C:\Users\DELL\Desktop\meteors.gif" alt="meteors"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;C:&#92;Users&#92;DELL&#92;Desktop&#92;meteors.gif&quot; alt=&quot;meteors&quot;&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+    <category term="Python百宝箱" scheme="http://example.com/tags/Python%E7%99%BE%E5%AE%9D%E7%AE%B1/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo部署Butterfly主题</title>
