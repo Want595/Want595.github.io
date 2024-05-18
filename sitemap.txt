@@ -1,4 +1,4 @@
-http://example.com/tags/index.html
-http://example.com/categories/index.html
-http://example.com/about/index.html
-http://example.com/
+https://want595.github.io/tags/index.html
+https://want595.github.io/categories/index.html
+https://want595.github.io/about/index.html
+https://want595.github.io/
