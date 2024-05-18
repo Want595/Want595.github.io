@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Want595</title>
+  
+  <subtitle>温特兔</subtitle>
+  <link href="https://want595.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://want595.github.io/"/>
+  <updated>2024-05-18T07:57:17.892Z</updated>
+  <id>https://want595.github.io/</id>
+  
+  <author>
+    <name>junwei</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测试</title>
+    <link href="https://want595.github.io/%E6%B5%8B%E8%AF%95/"/>
+    <id>https://want595.github.io/%E6%B5%8B%E8%AF%95/</id>
+    <published>2024-05-18T07:57:17.000Z</published>
+    <updated>2024-05-18T07:57:17.892Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux命令</title>
+    <link href="https://want595.github.io/Linux%E5%91%BD%E4%BB%A4/"/>
+    <id>https://want595.github.io/Linux%E5%91%BD%E4%BB%A4/</id>
+    <published>2024-05-18T07:52:00.000Z</published>
+    <updated>2024-05-18T07:52:00.202Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+</feed>
