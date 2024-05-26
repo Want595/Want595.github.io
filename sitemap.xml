@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://want595.github.io/2024/05/20/OpenNJet%E4%BA%A7%E5%93%81%E4%BD%93%E9%AA%8C/</loc>
+    
+    <lastmod>2024-05-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://want595.github.io/2024/05/20/%E4%B8%8EApollo%E5%85%B1%E5%88%9B%E7%94%9F%E6%80%81/</loc>
     
     <lastmod>2024-05-26</lastmod>
@@ -30,15 +39,6 @@
   
   <url>
     <loc>https://want595.github.io/2024/05/20/Hexo%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/</loc>
-    
-    <lastmod>2024-05-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://want595.github.io/2024/05/20/OpenNJet%E4%BA%A7%E5%93%81%E4%BD%93%E9%AA%8C/</loc>
     
     <lastmod>2024-05-20</lastmod>
     
@@ -182,14 +182,14 @@
 
   
   <url>
-    <loc>https://want595.github.io/categories/Git%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://want595.github.io/categories/Hexo%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2024-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://want595.github.io/categories/Hexo%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://want595.github.io/categories/Git%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2024-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
