@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://want595.github.io/2024/06/06/Python%E7%99%BE%E5%AE%9D%E7%AE%B1/</loc>
+    
+    <lastmod>2024-06-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://want595.github.io/2024/06/05/%E6%81%8B%E7%88%B1%E5%8A%A9%E6%89%8B/</loc>
     
     <lastmod>2024-06-06</lastmod>
@@ -182,7 +191,7 @@
 
   
   <url>
-    <loc>https://want595.github.io/tags/%E6%9E%81%E6%98%9F%E4%BC%9A/</loc>
+    <loc>https://want595.github.io/tags/%E7%99%BE%E5%AE%9D%E7%AE%B1/</loc>
     <lastmod>2024-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -190,6 +199,13 @@
   
   <url>
     <loc>https://want595.github.io/tags/%E6%99%BA%E8%83%BD%E4%BD%93/</loc>
+    <lastmod>2024-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://want595.github.io/tags/%E6%9E%81%E6%98%9F%E4%BC%9A/</loc>
     <lastmod>2024-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
