@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://want595.github.io/2024/06/12/20240612/</loc>
+    
+    <lastmod>2024-06-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://want595.github.io/2024/05/04/2024-05-%E6%B1%82%E6%9E%81%E9%99%90%E9%97%AE%E9%A2%98/</loc>
+    
+    <lastmod>2024-06-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://want595.github.io/diaries/index.html</loc>
     
     <lastmod>2024-06-11</lastmod>
@@ -182,15 +200,6 @@
   </url>
   
   <url>
-    <loc>https://want595.github.io/2024/05/04/2024-05-%E6%B1%82%E6%9E%81%E9%99%90%E9%97%AE%E9%A2%98/</loc>
-    
-    <lastmod>2024-05-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://want595.github.io/2024/05/05/2024-05-%E6%B1%82%E6%B8%90%E8%BF%91%E7%BA%BF%E9%97%AE%E9%A2%98/</loc>
     
     <lastmod>2024-05-06</lastmod>
@@ -220,29 +229,29 @@
 
   <url>
     <loc>https://want595.github.io/</loc>
-    <lastmod>2024-06-11</lastmod>
+    <lastmod>2024-06-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
+    <loc>https://want595.github.io/tags/%E6%9E%81%E6%98%9F%E4%BC%9A/</loc>
+    <lastmod>2024-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://want595.github.io/tags/%E7%99%BE%E5%AE%9D%E7%AE%B1/</loc>
-    <lastmod>2024-06-11</lastmod>
+    <lastmod>2024-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://want595.github.io/tags/%E6%99%BA%E8%83%BD%E4%BD%93/</loc>
-    <lastmod>2024-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://want595.github.io/tags/%E6%9E%81%E6%98%9F%E4%BC%9A/</loc>
-    <lastmod>2024-06-11</lastmod>
+    <lastmod>2024-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -251,28 +260,28 @@
   
   <url>
     <loc>https://want595.github.io/categories/Git%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2024-06-11</lastmod>
+    <lastmod>2024-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://want595.github.io/categories/Hexo%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2024-06-11</lastmod>
+    <lastmod>2024-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://want595.github.io/categories/Linux%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2024-06-11</lastmod>
+    <lastmod>2024-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://want595.github.io/categories/%E9%AB%98%E6%95%B0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2024-06-11</lastmod>
+    <lastmod>2024-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
