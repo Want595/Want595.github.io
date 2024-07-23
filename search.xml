@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>本地PyCharm连接虚拟机Centos9</title>
+      <link href="/2024/07/23/%E6%9C%AC%E5%9C%B0PyCharm%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BACentos9/"/>
+      <url>/2024/07/23/%E6%9C%AC%E5%9C%B0PyCharm%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BACentos9/</url>
+      
+        <content type="html"><![CDATA[<h1 id="本地PyCharm连接虚拟机（Centos9）"><a href="#本地PyCharm连接虚拟机（Centos9）" class="headerlink" title="本地PyCharm连接虚拟机（Centos9）"></a>本地PyCharm连接虚拟机（Centos9）</h1><p>注意：创建项目后再连接，更换项目后需要重新连接</p><h2 id="零、资源准备"><a href="#零、资源准备" class="headerlink" title="零、资源准备"></a>零、资源准备</h2><ul><li><strong>PyCharm专业版</strong></li><li>虚拟机（Centos9）</li></ul><h2 id="一、远程连接虚拟机"><a href="#一、远程连接虚拟机" class="headerlink" title="一、远程连接虚拟机"></a>一、远程连接虚拟机</h2><ol><li>打开PyCharm（专业版）的Configuration</li></ol><p><img src="/2024/07/23/%E6%9C%AC%E5%9C%B0PyCharm%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BACentos9/image-20240723105156843.png" alt="image-20240723105156843"></p><ol><li>单击＋号，选择SFTP，输入虚拟机的ip</li></ol><p><img src="/2024/07/23/%E6%9C%AC%E5%9C%B0PyCharm%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BACentos9/image-20240723105233539.png" alt="image-20240723105233539"></p><p>注：虚拟机的ip可以用ifconfig获取</p><p><img src="/2024/07/23/%E6%9C%AC%E5%9C%B0PyCharm%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BACentos9/image-20240723102657235.png" alt="image-20240723102657235"></p><ol><li>单击SSH configuration的“…”，配置虚拟机信息并测试连接是否成功（确保虚拟机启动）</li></ol><ul><li>输入虚拟机的ip</li><li>输入虚拟机的用户名</li><li>单击Test Connection测试</li></ul><p><img src="/2024/07/23/%E6%9C%AC%E5%9C%B0PyCharm%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BACentos9/image-20240723105300963.png" alt="image-20240723105300963"></p><ol><li>单击Mappings，配置基本信息</li></ol><ul><li>Local path表示本地项目</li><li>Deployment path表示运行.py文件后，在虚拟机创建的文件路径</li><li>Web path可以不配置</li></ul><p><img src="/2024/07/23/%E6%9C%AC%E5%9C%B0PyCharm%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BACentos9/image-20240723105321299.png" alt="image-20240723105321299"></p><ol><li>配置完成后，可以单击Browse Remote Host查看虚拟机</li></ol><ul><li>单击Browse Remote Host</li></ul><p><img src="/2024/07/23/%E6%9C%AC%E5%9C%B0PyCharm%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BACentos9/image-20240723105440480.png" alt="image-20240723105440480"></p><ul><li>查看虚拟机</li></ul><p><img src="/2024/07/23/%E6%9C%AC%E5%9C%B0PyCharm%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BACentos9/image-20240723105451975.png" alt="image-20240723105451975"></p><h2 id="二、运行Python脚本"><a href="#二、运行Python脚本" class="headerlink" title="二、运行Python脚本"></a>二、运行Python脚本</h2><ol><li>单击File-&gt;settings，打开设置，选择Python Interpreter，单击Add Interpreter，选择On SSH</li></ol><p><img src="/2024/07/23/%E6%9C%AC%E5%9C%B0PyCharm%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BACentos9/image-20240723105530745.png" alt="image-20240723105530745"></p><ol><li>配置虚拟机</li></ol><ul><li>输入虚拟机账号</li></ul><p><img src="/2024/07/23/%E6%9C%AC%E5%9C%B0PyCharm%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BACentos9/image-20240723105613837.png" alt="image-20240723105613837"></p><ul><li>输入密码</li></ul><p><img src="/2024/07/23/%E6%9C%AC%E5%9C%B0PyCharm%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BACentos9/image-20240723105625091.png" alt="image-20240723105625091"></p><ul><li>等待配置</li></ul><p><img src="/2024/07/23/%E6%9C%AC%E5%9C%B0PyCharm%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BACentos9/image-20240723105631097.png" alt="image-20240723105631097"></p><ul><li>配置解释器（路径可自己设置，Sync folders表示虚拟机的文件地址）</li></ul><p><img src="/2024/07/23/%E6%9C%AC%E5%9C%B0PyCharm%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BACentos9/image-20240723105715918.png" alt="image-20240723105715918"></p><ul><li>配置成功</li></ul><p><img src="/2024/07/23/%E6%9C%AC%E5%9C%B0PyCharm%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BACentos9/image-20240723105751115.png" alt="image-20240723105751115"></p><ol><li>测试脚本</li></ol><p>创建main.py脚本并运行</p><p><img src="/2024/07/23/%E6%9C%AC%E5%9C%B0PyCharm%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BACentos9/image-20240723105851172.png" alt="image-20240723105851172"></p><ul><li>/usr/bin/python3：python位置</li><li>/opt/data/python/main.py：python文件位置</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大数据集群 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>完全分布式高可用集群（Flink）</title>
       <link href="/2024/07/22/%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8F%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4%EF%BC%88Flink%EF%BC%89/"/>
       <url>/2024/07/22/%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8F%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4%EF%BC%88Flink%EF%BC%89/</url>
