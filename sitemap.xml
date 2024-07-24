@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://want595.github.io/about/index.html</loc>
+    
+    <lastmod>2024-07-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://want595.github.io/2024/07/24/%E9%85%8D%E7%BD%AEMarkdown%E7%9A%84%E5%9B%BE%E5%BA%8A%EF%BC%88Typora-PicGo-GitHub%EF%BC%89/</loc>
     
     <lastmod>2024-07-24</lastmod>
@@ -307,15 +316,6 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>https://want595.github.io/about/index.html</loc>
-    
-    <lastmod>2024-05-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   <url>
     <loc>https://want595.github.io/</loc>
@@ -349,14 +349,14 @@
 
   
   <url>
-    <loc>https://want595.github.io/categories/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91Git/</loc>
+    <loc>https://want595.github.io/categories/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91Hexo/</loc>
     <lastmod>2024-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://want595.github.io/categories/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91Hexo/</loc>
+    <loc>https://want595.github.io/categories/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91Git/</loc>
     <lastmod>2024-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -384,14 +384,14 @@
   </url>
   
   <url>
-    <loc>https://want595.github.io/categories/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91Markdown/</loc>
+    <loc>https://want595.github.io/categories/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91Python/</loc>
     <lastmod>2024-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://want595.github.io/categories/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91Python/</loc>
+    <loc>https://want595.github.io/categories/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91Markdown/</loc>
     <lastmod>2024-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
