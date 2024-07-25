@@ -441,7 +441,7 @@
     <link href="https://want595.github.io/2024/05/20/2024-05-Hexo%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/"/>
     <id>https://want595.github.io/2024/05/20/2024-05-Hexo%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/</id>
     <published>2024-05-20T06:34:34.000Z</published>
-    <updated>2024-06-13T07:13:20.254Z</updated>
+    <updated>2024-07-25T02:50:22.411Z</updated>
     
     <content type="html"><![CDATA[<h1 id="1-设置属性"><a href="#1-设置属性" class="headerlink" title="1.设置属性"></a>1.设置属性</h1><p>将文件 <code>_config.yml</code> 的属性 <code>post_asset_folder</code> 设置为 <strong>true</strong></p><h1 id="2-安装插件"><a href="#2-安装插件" class="headerlink" title="2.安装插件"></a>2.安装插件</h1><p>安装插件 <code>asset-image</code></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image</span><br></pre></td></tr></table></figure><h1 id="3-设置图片为相对路径"><a href="#3-设置图片为相对路径" class="headerlink" title="3.设置图片为相对路径"></a>3.设置图片为相对路径</h1><p>在文章中使用 <code>![]()</code> 格式插入图片，并使用相对路径，将路径中的反斜杠 <code>\</code> 修改为正斜杠 <code>/</code></p><p><img src="Hexo添加图片/img.png" alt="img"></p>]]></content>
     
@@ -453,7 +453,7 @@
     
     
     
-    <category term="【笔记】Hexo" scheme="https://want595.github.io/categories/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91Hexo/"/>
+    <category term="Hexo" scheme="https://want595.github.io/categories/Hexo/"/>
     
     
   </entry>
