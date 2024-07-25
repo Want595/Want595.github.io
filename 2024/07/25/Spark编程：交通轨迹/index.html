@@ -1,0 +1,634 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Spark编程：交通轨迹 | Want595</title><meta name="author" content="junwei"><meta name="copyright" content="junwei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Spark编程：交通轨迹1、数据准备1.1在master节点创建实验文件夹，拷贝数据文件 1.1.1在zkpk家目录下创建实验文件夹taxifx，并进入实验文件夹taxifx 12[zkpk@master ~]$ mkdir taxifx[zkpk@master ~]$ cd taxifx 1.1.2拷贝实验数据到实验文件夹中 1[zkpk@master taxifx]$ cp ~&#x2F;experim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark编程：交通轨迹">
+<meta property="og:url" content="https://want595.github.io/2024/07/25/Spark%E7%BC%96%E7%A8%8B%EF%BC%9A%E4%BA%A4%E9%80%9A%E8%BD%A8%E8%BF%B9/index.html">
+<meta property="og:site_name" content="Want595">
+<meta property="og:description" content="Spark编程：交通轨迹1、数据准备1.1在master节点创建实验文件夹，拷贝数据文件 1.1.1在zkpk家目录下创建实验文件夹taxifx，并进入实验文件夹taxifx 12[zkpk@master ~]$ mkdir taxifx[zkpk@master ~]$ cd taxifx 1.1.2拷贝实验数据到实验文件夹中 1[zkpk@master taxifx]$ cp ~&#x2F;experim">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://want595.github.io/img/wss.png">
+<meta property="article:published_time" content="2024-07-25T02:03:29.000Z">
+<meta property="article:modified_time" content="2024-07-25T02:06:35.192Z">
+<meta property="article:author" content="junwei">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://want595.github.io/img/wss.png"><link rel="shortcut icon" href="/img/w.png"><link rel="canonical" href="https://want595.github.io/2024/07/25/Spark%E7%BC%96%E7%A8%8B%EF%BC%9A%E4%BA%A4%E9%80%9A%E8%BD%A8%E8%BF%B9/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.14.0-b3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.35/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>(()=>{
+      const saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+      
+      window.btf = {
+        saveToLocal: saveToLocal,
+        getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = url
+          script.async = true
+          script.onerror = reject
+          script.onload = script.onreadystatechange = function() {
+            const loadState = this.readyState
+            if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+            script.onload = script.onreadystatechange = null
+            resolve()
+          }
+
+          Object.keys(attr).forEach(key => {
+            script.setAttribute(key, attr[key])
+          })
+
+          document.head.appendChild(script)
+        }),
+
+        getCSS: (url, id = false) => new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+          link.rel = 'stylesheet'
+          link.href = url
+          if (id) link.id = id
+          link.onerror = reject
+          link.onload = link.onreadystatechange = function() {
+            const loadState = this.readyState
+            if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+            link.onload = link.onreadystatechange = null
+            resolve()
+          }
+          document.head.appendChild(link)
+        }),
+
+        addGlobalFn: (key, fn, name = false, parent = window) => {
+          const pjaxEnable = false
+          if (!pjaxEnable && key.startsWith('pjax')) return
+
+          const globalFn = parent.globalFn || {}
+          const keyObj = globalFn[key] || {}
+    
+          if (name && keyObj[name]) return
+    
+          name = name || Object.keys(keyObj).length
+          keyObj[name] = fn
+          globalFn[key] = keyObj
+          parent.globalFn = globalFn
+        }
+      }
+    
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+      
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })()</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: junwei","link":"链接: ","source":"来源: Want595","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Spark编程：交通轨迹',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: undefined,
+  isToc: true,
+  postUpdate: '2024-07-25 10:06:35'
+}</script><meta name="generator" content="Hexo 7.2.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><link rel="alternate" href="/atom.xml" title="Want595" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/w.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 日记</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 其他</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/wss.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Want595"><span class="site-name">Want595</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 日记</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 其他</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Spark编程：交通轨迹</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-25T02:03:29.000Z" title="发表于 2024-07-25 10:03:29">2024-07-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-25T02:06:35.192Z" title="更新于 2024-07-25 10:06:35">2024-07-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9B%86%E7%BE%A4/">大数据集群</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Spark编程：交通轨迹"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2024/07/25/Spark%E7%BC%96%E7%A8%8B%EF%BC%9A%E4%BA%A4%E9%80%9A%E8%BD%A8%E8%BF%B9/#post-comment"><span class="gitalk-comment-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Spark编程：交通轨迹"><a href="#Spark编程：交通轨迹" class="headerlink" title="Spark编程：交通轨迹"></a>Spark编程：交通轨迹</h1><h2 id="1、数据准备"><a href="#1、数据准备" class="headerlink" title="1、数据准备"></a>1、数据准备</h2><p>1.1在master节点创建实验文件夹，拷贝数据文件</p>
+<p>1.1.1在zkpk家目录下创建实验文件夹taxifx，并进入实验文件夹taxifx</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[zkpk@master ~]$ mkdir taxifx</span><br><span class="line">[zkpk@master ~]$ cd taxifx</span><br></pre></td></tr></table></figure>
+<p>1.1.2拷贝实验数据到实验文件夹中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[zkpk@master taxifx]$ cp ~/experiment/taxi.csv ./</span><br></pre></td></tr></table></figure>
+<p>1.1.3CSV 格式是数据分析工作中常见的一种数据格式。CSV意为逗号分隔值（Comma-Separated Values），其文件以纯文本形式存储表格数据（数字和文本）。每行只有一条记录，每条记录被逗号分隔符分隔为字段，并且每条记录都有同样的字段序列。</p>
+<h2 id="2、解析csv数据"><a href="#2、解析csv数据" class="headerlink" title="2、解析csv数据"></a>2、解析csv数据</h2><p>2.1使用由 DataBricks 公司提供的第三方 Spark CSV 解析库来读取</p>
+<p>2.1.1加载csv第三方插件，启动spark-shell（加载csv解析插件），出现如下结果即为csv解析包下载成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[zkpk@master taxifx]$ cd</span><br><span class="line">[zkpk@master ~]$ spark-shell --packages com.databricks:spark-csv_2.11:1.1.0</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725093623457.png" alt="image-20240725093623457"></p>
+<p>2.1.2导入数据</p>
+<p>2.1.2.1导入实验所需的spark包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import org.apache.spark._</span><br><span class="line">import org.apache.spark.sql._</span><br><span class="line">import org.apache.spark.sql.types._</span><br><span class="line">import org.apache.spark.sql.functions._</span><br><span class="line">import org.apache.spark.ml.feature.VectorAssembler</span><br><span class="line">import org.apache.spark.ml.clustering.KMeans</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725093659464.png" alt="image-20240725093659464"></p>
+<p>2.1.2.2利用StructType定义字段格式，这里应该和csv数据集中的字段一一对应，StructField中的三个参数为字段名称，数据类型，和是否不允许为空</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">val fieldSchema = StructType(Array(</span><br><span class="line">StructField("TID",StringType,true),</span><br><span class="line">StructField("Lat",DoubleType,true),</span><br><span class="line">StructField("Lon",DoubleType,true),</span><br><span class="line">StructField("Time",StringType,true)</span><br><span class="line">))</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725093814327.png" alt="image-20240725093814327"></p>
+<p>2.1.2.3利用sc创建sqlContext，用于执行SparkSQL，利用sqlContext对象的read接口，加载格式format为com.databricks.spark.csv的数据文件，并赋值给DataFrame对象taxidf</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val sqlContext = new SQLContext(sc)</span><br><span class="line">val taxidf = sqlContext.read.format("com.databricks.spark.csv").option("header","false").schema(fieldSchema).load("/home/zkpk/taxifx/taxi.csv")</span><br></pre></td></tr></table></figure>
+<p><img src="C:/Users/DELL/Desktop/image/%25E4%25BA%25A4%25E9%2580%259A%25E8%25BD%25A8%25E8%25BF%25B9%25EF%25BC%259A%25E5%25AE%259E%25E9%25AA%258C/image-20240725093845114.png" alt="image-20240725093845114"></p>
+<p>2.1.2.4利用taxidf对象的printSchema方法打印输出该对象的字段格式</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taxidf.printSchema()</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725093902958.png" alt="image-20240725093902958"></p>
+<p>2.1.2.5利用taxidf对象的show方法打印输出前20条数据（默认为输出前20条数据）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taxidf.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725093935425.png" alt="image-20240725093935425"></p>
+<h2 id="3、构建特征向量"><a href="#3、构建特征向量" class="headerlink" title="3、构建特征向量"></a>3、构建特征向量</h2><p>3.1转换数据字段中的经纬度，定义特征数组</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val columns = Array("Lat","Lon")</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725093957660.png" alt="image-20240725093957660"></p>
+<p>3.2创建向量装配器VetorAssembler，并设置相关属性</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val va = new VectorAssembler().setInputCols(columns).setOutputCol("features")</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094106538.png" alt="image-20240725094106538"></p>
+<p>3.3利用向量装配器的transform方法对导入的数据taxidf进行转化，并赋值给taxidf2</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val taxidf2 = va.transform(taxidf)</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094131947.png" alt="image-20240725094131947"></p>
+<p>3.4利用taxidf2对象的show方法打印前20条数据查看</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taxidf2.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094204105.png" alt="image-20240725094204105"></p>
+<h2 id="4、聚类模型训练"><a href="#4、聚类模型训练" class="headerlink" title="4、聚类模型训练"></a>4、聚类模型训练</h2><p>4.1进行K-Means聚类模型训练</p>
+<p>4.1.1K-Means是迭代算法，所以将数据缓存到内存中加快计算速度</p>
+<p>4.1.1.1Spark命令行方法，没有具体参数的话，可以加上括号，也可以不加</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taxidf2.cache</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094229275.png" alt="image-20240725094229275"></p>
+<p>4.1.2将数据集划分比例分别作为训练集和测试集</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val trainTestRatio = Array(0.7,0.3)</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094247811.png" alt="image-20240725094247811"></p>
+<p>4.1.3对数据集进行随机划分，randomSplit 的第二个参数为随机数的种子</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val Array(trainingData,testData) = taxidf2.randomSplit(trainTestRatio,2333)</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094307507.png" alt="image-20240725094307507"></p>
+<p>4.1.4设置K-Means模型参数，创建模型</p>
+<p>4.1.4.1setK()：是一个 “Parameter setter”，用于设置聚类的簇数量</p>
+<p>4.1.4.2setFeaturesCol()：设置数据集中的特征列所在的字段名称</p>
+<p>4.1.4.3setPredictionCol：设置生成预测值时使用的字段名称</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val km = new KMeans().setK(10).setFeaturesCol("features").setPredictionCol("prediction")</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094402227.png" alt="image-20240725094402227"></p>
+<p>4.1.5利用fit方法将Kmeans对象对指定数据的特征进行匹配适应，训练模型</p>
+<p>4.1.5.1fit()：将 KMeans 对象对指定数据的特征进行匹配适应，训练模型</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val kmModel = km.fit(taxidf2)</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094439602.png" alt="image-20240725094439602"></p>
+<p>4.1.6获取Kmeans模型的聚类中心，可以看到之前设定数量为 10 的聚类结果</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val Result = kmModel.clusterCenters</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094453583.png" alt="image-20240725094453583"></p>
+<p>4.1.7将结果转换为RDD类型，进行经纬度互换，调用RDD对象的saveAsTextFile方法保存结果到本地</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">val kmRDD1 = sc.parallelize(Result)</span><br><span class="line">val kmRDD2 = kmRDD1.map(x=&gt;(x(1),x(0)))</span><br><span class="line">kmRDD2.saveAsTextFile("/home/zkpk/taxifx/kmResult")</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094519408.png" alt="image-20240725094519408"></p>
+<h2 id="5、聚类模型测试"><a href="#5、聚类模型测试" class="headerlink" title="5、聚类模型测试"></a>5、聚类模型测试</h2><p>5.1.对测试集进行聚类分析</p>
+<p>5.1.1调用Kmeans模型的transform方法对测试数据进行聚类，结果赋值给predictions对象</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val predictions = kmModel.transform(testData)</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094546041.png" alt="image-20240725094546041"></p>
+<p>5.1.2调用predictions对象的show方法，输出预测结果</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">predictions.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094607402.png" alt="image-20240725094607402"></p>
+<h2 id="6、分析预测结果"><a href="#6、分析预测结果" class="headerlink" title="6、分析预测结果"></a>6、分析预测结果</h2><p>6.1预测结果为DataFrame，我们先将其注册为临时表perdictions，然后使用SQL查询功能</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">predictions.registerTempTable("predictions")</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094633607.png" alt="image-20240725094633607"></p>
+<p>6.2利用SQL查询”每天哪个时段的出租车最繁忙”和“每天哪个时段的出租车最空闲”需求</p>
+<p>6.2.1提取出 Time 字段的前 2 位作为一天之中的小时数</p>
+<p>6.2.2基于小时数进行不同预测类型的数量进行统计</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val tmpQuery = predictions.select(substring($"Time",0,2).alias("hour"),$"prediction").groupBy("hour","prediction")</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094646524.png" alt="image-20240725094646524"></p>
+<p>6.2.3利用聚焦函数agg的count实现，并以desc降序输出结果</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val predictCountdesc = tmpQuery.agg(count("prediction").alias("count")).orderBy(desc("count"))</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094708375.png" alt="image-20240725094708375"></p>
+<p>6.2.4可以发现某一区域在前20条数据中出现次数较高，此区域即为出租车最繁忙区域，如4号区域，可以看到在下午14-15点这一时间段，4号区域的载客量为5552最多最繁忙，，因此我们在对表predictions进行where查询，找出4号区域的经纬度记录下来，稍后我们看一下这个位置具体在哪里</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">predictCountdesc.show()</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val busyarea = predictions.select($"Lat",$"Lon").where("prediction=4")</span><br><span class="line">busyarea.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094732152.png" alt="image-20240725094732152"></p>
+<p>6.2.4.1可以看出繁忙的4区域的经纬度基本在[104.072959,30.658476]左右</p>
+<p>6.2.5再次利用聚焦函数agg的count实现，并以asc降序输出结果</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val predictCountasc = tmpQuery.agg(count("prediction").alias("count")).orderBy(asc("count"))</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094801703.png" alt="image-20240725094801703"></p>
+<p>6.2.6可以发现某一区域在前20条数据中出现次数较高，此区域即为出租车最空闲区域，例如9号区域，可以发现在早上8点到10点时间段，9号区域的载客量为最少最空闲，因此我们在对表predictions进行查询，找出9号区域的经纬度记录下来，稍后我们看一下这个位置具体在哪里</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">predictCountasc.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094826807.png" alt="image-20240725094826807"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val notbusyarea = predictions.select($"Lat",$"Lon").where("prediction=9")</span><br><span class="line">notbusyarea.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094843285.png" alt="image-20240725094843285"></p>
+<p>6.2.6.1可以看到不繁忙区域9的经纬度在[104.571579,30.368929]左右</p>
+<p>6.3利用SQL查询“每天哪个区域的出租车最繁忙”和“每天哪个区域的出租车最空闲”需求</p>
+<p>6.3.1这里的结果可以对聚类区域进行分组统计操作，即可得到每个区域的出租车载客次数总计</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val busyZones = predictions.groupBy("prediction").count()</span><br><span class="line">busyZones.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094915815.png" alt="image-20240725094915815"></p>
+<p>6.3.1.1可以看到每天区域4最繁忙，载客次数为68366</p>
+<p>6.3.1.2可以看到每天区域9最空闲，载客次数为141</p>
+<p>6.3.2调用busyZones对象的write.csv(“路径”)方法，保存结果到本地</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">busyZones.write.csv("/home/zkpk/taxifx/busyZones")</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094938848.png" alt="image-20240725094938848"></p>
+<p>6.3.3利用:quit退出spark shell</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/image-20240725094951684.png" alt="image-20240725094951684"></p>
+<h2 id="7、数据可视化（可选）"><a href="#7、数据可视化（可选）" class="headerlink" title="7、数据可视化（可选）"></a>7、数据可视化（可选）</h2><p>7.1本实验利用百度地图的相关API实现出租车数据地图可视化</p>
+<p>7.2注册百度地图开放平台和创建自己的应用</p>
+<p>7.2.1现在浏览器中打开百度地图开放平台（<a target="_blank" rel="noopener" href="http://lbsyun.baidu.com/">http://lbsyun.baidu.com</a>）,使用百度账户登录（若没有账户请自行创建）</p>
+<p>7.2.2登录完成后，在导航栏输入百度地图开放平台控制台页面（<a target="_blank" rel="noopener" href="http://lbsyun.baidu.com/apiconsole/key）">http://lbsyun.baidu.com/apiconsole/key）</a></p>
+<p>7.2.3进入如下界面</p>
+<p>7.2.4在API控制台的“查看应用”界面，点击“创建应用”按钮</p>
+<p>7.2.5填写创建应用表单</p>
+<p>7.2.5.1应用名称可自定义</p>
+<p>7.2.5.2应用类型选择浏览器端</p>
+<p>7.2.5.3白名单为*号</p>
+<p>7.2.5.4点击“提交”按钮</p>
+<p>7.2.6应用创建成功后，可在应用列表中看到相应应用信息</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/b96a38a1d0cdc1c16b60fa0f418e00d4.png" alt="img"></p>
+<p>7.2.7记住上图的应用AK，稍后我们会用此AK去调用百度地图的相关服务</p>
+<p>7.2.8在测试数据使用聚类模型进行数据分析中，我们将结果保存在/home/zkpk/taxifx/kmResult目录中</p>
+<p>7.2.9数据处理</p>
+<p>7.2.9.1利用cat重定向将分散在各个文件中的结果合并在单个文件中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[zkpk@master ~]$ cd taxifx/kmResult</span><br><span class="line">[zkpk@master kmResult]$ cat part-* &gt;&gt; kmresult.csv</span><br></pre></td></tr></table></figure>
+<p>7.2.9.2利用sed命令来指定字符的删除操作，正则表达式s/^.//匹配了行首的第一个字符（左括号），正则表达式s/.$//匹配了行末的最后一个字符（右括号）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[zkpk@master kmResult]$ sed 's/^.//' kmresult.csv &gt;&gt; test1.csv</span><br><span class="line">[zkpk@master kmResult]$ sed 's/.$//' test1.csv &gt;&gt; test2.csv</span><br></pre></td></tr></table></figure>
+<p>7.2.9.3将所有的换行符替换为分隔符“|”， 正则表达式 :a;N;<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="78.909ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 34877.7 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="21" d="M78 661Q78 682 96 699T138 716T180 700T199 661Q199 654 179 432T158 206Q156 198 139 198Q121 198 119 206Q118 209 98 431T78 661ZM79 61Q79 89 97 105T141 121Q164 119 181 104T198 61Q198 31 181 16T139 1Q114 1 97 16T79 61Z"></path></g><g data-mml-node="mi" transform="translate(278,0)"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></g><g data-mml-node="mi" transform="translate(707,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mo" transform="translate(1236,0)"><path data-c="3B" d="M78 370Q78 394 95 412T138 430Q162 430 180 414T199 371Q199 346 182 328T139 310T96 327T78 370ZM78 60Q78 85 94 103T137 121Q202 121 202 8Q202 -44 183 -94T144 -169T118 -194Q115 -194 106 -186T95 -174Q94 -171 107 -155T137 -107T160 -38Q161 -32 162 -22T165 -4T165 4Q165 5 161 4T142 0Q110 0 94 18T78 60Z"></path></g><g data-mml-node="mi" transform="translate(1680.7,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(2149.7,0)"><g data-mml-node="mo"><path data-c="2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path></g></g><g data-mml-node="mtext" fill="red" stroke="red" transform="translate(2649.7,0)"><path data-c="5C" d="M56 731Q56 740 62 745T75 750Q85 750 92 740Q96 733 270 255T444 -231Q444 -239 438 -244T424 -250Q414 -250 407 -240Q404 -236 230 242T56 731Z"></path><path data-c="6E" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z" transform="translate(500,0)"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(3705.7,0)"><g data-mml-node="mo"><path data-c="2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path></g></g><g data-mml-node="mo" transform="translate(4205.7,0) translate(0 -0.5)"><path data-c="7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(4483.7,0)"><g data-mml-node="mo"><path data-c="2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path></g></g><g data-mml-node="mi" transform="translate(4983.7,0)"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path></g><g data-mml-node="mi" transform="translate(5460.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">中</text></g><g data-mml-node="mi" transform="translate(6460.7,0)"><text data-variant="italic" transform="scale(1,-1)" font-size="884px" font-family="serif" font-style="italic">：</text></g><g data-mml-node="mi" transform="translate(7460.7,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mi" transform="translate(7989.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">用</text></g><g data-mml-node="mi" transform="translate(8989.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">于</text></g><g data-mml-node="mi" transform="translate(9989.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">创</text></g><g data-mml-node="mi" transform="translate(10989.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">建</text></g><g data-mml-node="mi" transform="translate(11989.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">一</text></g><g data-mml-node="mi" transform="translate(12989.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">个</text></g><g data-mml-node="mi" transform="translate(13989.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">标</text></g><g data-mml-node="mi" transform="translate(14989.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">记</text></g><g data-mml-node="mi" transform="translate(15989.7,0)"><text data-variant="italic" transform="scale(1,-1)" font-size="884px" font-family="serif" font-style="italic">，</text></g><g data-mml-node="mi" transform="translate(16989.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">通</text></g><g data-mml-node="mi" transform="translate(17989.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">过</text></g><g data-mml-node="mi" transform="translate(18989.7,0)"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></g><g data-mml-node="mi" transform="translate(19877.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">追</text></g><g data-mml-node="mi" transform="translate(20877.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">加</text></g><g data-mml-node="mi" transform="translate(21877.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">当</text></g><g data-mml-node="mi" transform="translate(22877.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">前</text></g><g data-mml-node="mi" transform="translate(23877.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">行</text></g><g data-mml-node="mi" transform="translate(24877.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">和</text></g><g data-mml-node="mi" transform="translate(25877.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">下</text></g><g data-mml-node="mi" transform="translate(26877.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">一</text></g><g data-mml-node="mi" transform="translate(27877.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">行</text></g><g data-mml-node="mi" transform="translate(28877.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">到</text></g><g data-mml-node="mi" transform="translate(29877.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">模</text></g><g data-mml-node="mi" transform="translate(30877.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">式</text></g><g data-mml-node="mi" transform="translate(31877.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">区</text></g><g data-mml-node="mi" transform="translate(32877.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">域</text></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(33877.7,0)"><g data-mml-node="mo"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">。</text></g></g></g></g></svg></mjx-container>!ba<br>的意思是如果处于最后一行前，则跳转到之前的标记处。最后定义好的置换操作，把模式区域（即整个文件）的每一个换行符<br>\n 换成一个分隔符“|”</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[zkpk@master kmResult]$ sed <span class="string">':a;N;$!ba;s/\n/|/g'</span> test2.csv &gt;&gt; test3.txt</span><br></pre></td></tr></table></figure>
+<p>7.2.9.4用cat打开test3.txt查看并复制所有参数作为请求后面的参数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/4874ff31fe41b338f9fbcdb89ecc20b5.png" alt="img"></p>
+<p>7.2.10设置请求百度地图API的相关参数</p>
+<p>7.2.10.1应用授权码AK（此处的ak码为你创建应用时的ak码）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ak= FNlqH4eBZmMCyCELAz4VWsNcZH******</span><br></pre></td></tr></table></figure>
+<p>7.2.10.2设置图片的宽高度</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">height=650</span><br><span class="line">width=1000</span><br></pre></td></tr></table></figure>
+<p>7.2.10.3设置地图中心点的经纬度</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">center=104.072959,30.658476</span><br></pre></td></tr></table></figure>
+<p>7.2.10.4设置经纬度列表（直接粘贴刚才赋值的test3.txt的内容即可）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">markers=104.06722420765115,30.599701217390912|103.97678653966989,30.568331441513585|103.87500910854187,30.72471987264872|103.62871623398165,30.92740290503437|104.06526902861037,30.65233797319958|104.0788635677185,30.699548133578695|104.11641860369171,30.641546653863603|104.01607522993989,30.66518876584617|104.2584157733787,30.673234293660432|104.49812695974578,30.50180488983051</span><br></pre></td></tr></table></figure>
+<p>7.2.10.5设置地图缩放级别</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zoom=11</span><br></pre></td></tr></table></figure>
+<p>7.2.11我们将上述各项参数结合起来拼接成API请求即可向百度地图开放平台提交请求（下面的URL只是一个例子，ak请替换成自己创建的）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://api.map.baidu.com/staticimage/v2?width=1000&amp;height=650&amp;center=104.072959,30.658476&amp;markers=104.06722420765115,30.599701217390912|103.97678653966989,30.568331441513585|103.87500910854187,30.72471987264872|103.62871623398165,30.92740290503437|104.06526902861037,30.65233797319958|104.0788635677185,30.699548133578695|104.11641860369171,30.641546653863603|104.01607522993989,30.66518876584617|104.2584157733787,30.673234293660432|104.49812695974578,30.50180488983051&amp;zoom=11&amp;ak=FNlqH4eBZmMCyCELAz4VWsNcZH******</span><br></pre></td></tr></table></figure>
+<p>7.2.12在浏览器打开输入URL回车，即可得到聚类结果的10个簇中心在地图上的位置，如下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/68c3cf884bc7c05b2d7a43eb1fd66cdd.png" alt="img"></p>
+<p>7.2.13针对每天哪个时段的出租车最繁忙和最空闲这一需求，前面我们已经在解决这一问题时保存了在某一时段最繁忙和最空闲的两个区域的经纬度，这里我们将URL的markers参数修改为4号区域的经纬度，并输入在浏览器中，即可知道出租车最繁忙的4号区域地理位置，如下图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/7151581119e3315c372b534837e4c558.png" alt="img"></p>
+<p>7.2.14这里我们将URL中的markers参数修改为9号区域的经纬度，并输入在浏览器中，即可知道出租车最空闲的9号区域的地理位置，如下图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/83058b430384ef4d6df1d24739a80e8e.png" alt="img"></p>
+<p>7.2.15我们还可以通过查询百度地图经纬度，修改center参数和缩放级别达到查看具体地址的效果，这里就不在赘述了</p>
+<p>7.3通过绘制柱状图比较不同的数据</p>
+<p>7.3.1创建项目：这里我们需要使用提供好的D3.js和其他的javascript脚本文件来构建效果网页</p>
+<p>7.3.2创建一个新的文件夹Visualization，并在此文件夹下创建名为data和js的两个文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[zkpk@master kmResult]$ cd </span><br><span class="line">[zkpk@master ~]$ cd taxifx</span><br><span class="line">[zkpk@master taxifx]$ mkdir Visualization</span><br><span class="line">[zkpk@master taxifx]$ cd Visualization</span><br><span class="line">[zkpk@master Visualization]$ mkdir data</span><br><span class="line">[zkpk@master Visualization]$ mkdir js</span><br></pre></td></tr></table></figure>
+<p>7.3.3解压并拷贝所有的js文件到此js目录中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[zkpk@master Visualization]$ cd ~/tgz/</span><br><span class="line">[zkpk@master tgz]$ tar -zxvf js.tar.gz</span><br><span class="line">[zkpk@master tgz]$ cp *.js ~/taxifx/Visualization/js/</span><br></pre></td></tr></table></figure>
+<p>7.3.4将数据聚类分析的结果busyZones合并成单个文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[zkpk@master tgz]$ cd</span><br><span class="line">[zkpk@master ~]$ cd taxifx/busyZones</span><br><span class="line">[zkpk@master busyZones]$ cat part-* &gt;&gt; data.csv</span><br></pre></td></tr></table></figure>
+<p>7.3.5在csv文件的首行加上字段名称</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[zkpk@master busyZones]$ sed -i "1i zone,numOfServices" data.csv</span><br></pre></td></tr></table></figure>
+<p>7.3.6将数据文件data.csv拷贝到data文件夹下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[zkpk@master busyZones]$ cp data.csv ~/taxifx/Visualization/data/</span><br></pre></td></tr></table></figure>
+<p>7.3.7在Visualization目录下创建编辑index.html文件（如果对html语言不太熟悉，我们也提供了写好的html在/home/zkpk/tgz目录下，直接拷贝到指定位置使用亦可）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[zkpk@master busyZones]$ cd</span><br><span class="line">[zkpk@master ~]$ cd taxifx/Visualization</span><br><span class="line">[zkpk@master Visualization]$ vim index.html</span><br></pre></td></tr></table></figure>
+<p>7.3.8在html文件中插入基本的HTML元素</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/f4d8824ff68ffb444a13ff0ea3e77085.png" alt="img"></p>
+<p>7.3.9因为我们会用到d3.js的相关API来绘图，所以在body中引用相关js文件（js文件已经拷贝到js文件夹下了）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/81052364a30d7de338a9cd3aced01f70.png" alt="img"></p>
+<p>7.3.10在body中填充画布的JavaScript代码（以下代码是包含在一个script标签中）</p>
+<p>7.3.10.1script标签开始，设置画布大小和边距</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/18fe95e4a2e1ccbb9462c67c01b814ff.png" alt="img"></p>
+<p>7.3.10.2设置X方向的范围和序数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/9755ef3d1a9688b9747fd2eedfebbfa2.png" alt="img"></p>
+<p>7.3.10.3设置Y方向的范围</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/07b1758a1315d4f642ca23b2e3f07696.png" alt="img"></p>
+<p>7.3.10.4设置X轴的大小和位置</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/9ba56aeb81d7b99ca135870eef9654c2.png" alt="img"></p>
+<p>7.3.10.5设置Y轴的大小和位置</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/ace84e4033327ebf432bef7dac63517c.png" alt="img"></p>
+<p>7.3.10.6设置鼠标指针指向矩形时的提示框属性和内容</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/a558a40f9f94e9a842ca0d90413307c8.png" alt="img"></p>
+<p>7.3.10.7设置画布，在body标签内动态添加svg标签，同时设置画布的宽高和边距</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/470877ff5f44e0a62c0501fec700f720.png" alt="img"></p>
+<p>7.3.10.8调用显示框组件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/9b3a1be1d4c53e32adcebeebb832cd1e.png" alt="img"></p>
+<p>7.3.10.9读取data目录下的data.csv文件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/4a0d61adf7fbf98f7909abc508c3b70e.png" alt="img"></p>
+<p>7.3.10.10设置x、y方向上要显示的数据</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/167b42b01ee7b847cf6d6d8d0ca901ce.png" alt="img"></p>
+<p>7.3.10.11在画布上绘制x轴</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/b34675fbf68a41269370f962a29476cb.png" alt="img"></p>
+<p>7.3.10.12在画布上绘制y轴，并设置标签和属性</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/d86b408d1d516bc9db8bc830872e4d2d.png" alt="img"></p>
+<p>7.3.10.13在画布上绘制矩形满招每项数据占总量的比例来绘制高度，同时为每个矩形设置事件监听器，在鼠标进入和移出当前元素时触发</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/5fcec150790019a0697809ccc5cf9fb5.png" alt="img"></p>
+<p>7.3.10.14定义用于计算数据总量的函数，script标签结束</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/329a97705b23ff0fe506ab260c6f0763.png" alt="img"></p>
+<p>7.3.11绘制图形结束后，我们需要在head标签中的title标签下方添加style标签，在style标签中添加以下内容，用于美化图形</p>
+<p>7.3.11.1style标签开始，设置坐标轴的颜色和边缘属性</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/2f732b242e37bcc83127031d3c933ea5.png" alt="img"></p>
+<p>7.3.11.2设置矩形的填充颜色</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/56d1145569cb6fa3d4333bf4cb576859.png" alt="img"></p>
+<p>7.3.11.3设置矩形被选中时的填充颜色</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/01f7a18b0a2194e476d7cdbaaff712ea.png" alt="img"></p>
+<p>7.3.11.4设置Tip提示框大小、间距、颜色等属性</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/1abe4973f96b7a524e787c402b311db4.png" alt="img"></p>
+<p>7.3.11.5在Tip提示框所在的圆角矩形下方添加一个小的三角形并设置它的大小和颜色</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/8a8783f77f7f713a365a43dbebab420a.png" alt="img"></p>
+<p>7.3.11.6设置三角形的位置，style标签结束</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/88f28262bd585875bba374080d3d8f1d.png" alt="img"></p>
+<p>7.3.12页面编辑完成之后利用:wq保存并退出，然后在浏览器中打开文件URL，查看可视化结果</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/25/a6e1f8d071590e09d277a19da19e7869.png" alt="img"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/Want595">junwei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://want595.github.io/2024/07/25/Spark%E7%BC%96%E7%A8%8B%EF%BC%9A%E4%BA%A4%E9%80%9A%E8%BD%A8%E8%BF%B9/">https://want595.github.io/2024/07/25/Spark编程：交通轨迹/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Want595.github.io" target="_blank">Want595</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/wss.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/vx.jpg" target="_blank"><img class="post-qr-code-img" src="/img/vx.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/07/24/%E9%85%8D%E7%BD%AEMarkdown%E7%9A%84%E5%9B%BE%E5%BA%8A%EF%BC%88Typora-PicGo-GitHub%EF%BC%89/" title="配置Markdown的图床（Typora+PicGo+GitHub）"><img class="cover" src="/img/wss.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">配置Markdown的图床（Typora+PicGo+GitHub）</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/w.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">junwei</div><div class="author-info__description">个人学习笔记</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Want595"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Want595" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://want595.blog.csdn.net" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">本站于2024.05.05日建站</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Spark%E7%BC%96%E7%A8%8B%EF%BC%9A%E4%BA%A4%E9%80%9A%E8%BD%A8%E8%BF%B9"><span class="toc-text">Spark编程：交通轨迹</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%95%B0%E6%8D%AE%E5%87%86%E5%A4%87"><span class="toc-text">1、数据准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E8%A7%A3%E6%9E%90csv%E6%95%B0%E6%8D%AE"><span class="toc-text">2、解析csv数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E6%9E%84%E5%BB%BA%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F"><span class="toc-text">3、构建特征向量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E8%81%9A%E7%B1%BB%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83"><span class="toc-text">4、聚类模型训练</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E8%81%9A%E7%B1%BB%E6%A8%A1%E5%9E%8B%E6%B5%8B%E8%AF%95"><span class="toc-text">5、聚类模型测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E5%88%86%E6%9E%90%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C"><span class="toc-text">6、分析预测结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-text">7、数据可视化（可选）</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/25/Spark%E7%BC%96%E7%A8%8B%EF%BC%9A%E4%BA%A4%E9%80%9A%E8%BD%A8%E8%BF%B9/" title="Spark编程：交通轨迹"><img src="/img/wss.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spark编程：交通轨迹"/></a><div class="content"><a class="title" href="/2024/07/25/Spark%E7%BC%96%E7%A8%8B%EF%BC%9A%E4%BA%A4%E9%80%9A%E8%BD%A8%E8%BF%B9/" title="Spark编程：交通轨迹">Spark编程：交通轨迹</a><time datetime="2024-07-25T02:03:29.000Z" title="发表于 2024-07-25 10:03:29">2024-07-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/24/%E9%85%8D%E7%BD%AEMarkdown%E7%9A%84%E5%9B%BE%E5%BA%8A%EF%BC%88Typora-PicGo-GitHub%EF%BC%89/" title="配置Markdown的图床（Typora+PicGo+GitHub）"><img src="/img/wss.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="配置Markdown的图床（Typora+PicGo+GitHub）"/></a><div class="content"><a class="title" href="/2024/07/24/%E9%85%8D%E7%BD%AEMarkdown%E7%9A%84%E5%9B%BE%E5%BA%8A%EF%BC%88Typora-PicGo-GitHub%EF%BC%89/" title="配置Markdown的图床（Typora+PicGo+GitHub）">配置Markdown的图床（Typora+PicGo+GitHub）</a><time datetime="2024-07-24T07:38:03.000Z" title="发表于 2024-07-24 15:38:03">2024-07-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/24/Python%E7%BC%96%E7%A8%8B%EF%BC%9A%E5%BE%AE%E5%8D%9A%E7%83%AD%E7%82%B9%E5%8F%91%E7%8E%B0/" title="Python编程：微博热点发现"><img src="/img/wss.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python编程：微博热点发现"/></a><div class="content"><a class="title" href="/2024/07/24/Python%E7%BC%96%E7%A8%8B%EF%BC%9A%E5%BE%AE%E5%8D%9A%E7%83%AD%E7%82%B9%E5%8F%91%E7%8E%B0/" title="Python编程：微博热点发现">Python编程：微博热点发现</a><time datetime="2024-07-24T05:12:44.000Z" title="发表于 2024-07-24 13:12:44">2024-07-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/23/%E6%9C%AC%E5%9C%B0PyCharm%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BACentos9/" title="本地PyCharm连接虚拟机Centos9"><img src="/img/wss.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="本地PyCharm连接虚拟机Centos9"/></a><div class="content"><a class="title" href="/2024/07/23/%E6%9C%AC%E5%9C%B0PyCharm%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BACentos9/" title="本地PyCharm连接虚拟机Centos9">本地PyCharm连接虚拟机Centos9</a><time datetime="2024-07-23T03:02:24.000Z" title="发表于 2024-07-23 11:02:24">2024-07-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/22/%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8F%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4%EF%BC%88Flink%EF%BC%89/" title="完全分布式高可用集群（Flink）"><img src="/img/wss.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="完全分布式高可用集群（Flink）"/></a><div class="content"><a class="title" href="/2024/07/22/%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8F%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4%EF%BC%88Flink%EF%BC%89/" title="完全分布式高可用集群（Flink）">完全分布式高可用集群（Flink）</a><time datetime="2024-07-22T07:10:14.000Z" title="发表于 2024-07-22 15:10:14">2024-07-22</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By junwei</div><div class="footer_custom_text">Hi,  welcome  to  my  <a href="https://Want595.github.io">  blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.14.0-b3"></script><script src="/js/main.js?v=4.14.0-b3"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.35/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'ams'
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+      
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const runMermaid = (ele) => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from(ele).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+    
+    codeMermaidEle.forEach(ele => {
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.innerHTML = `<pre class="mermaid-src" hidden>${ele.textContent}</pre>`
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js').then(runMermaidFn)
+  }
+  
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const initGitalk = () => {
+    const gitalk = new Gitalk(Object.assign({
+      clientID: 'Ov23li18r8Ws5kg3EOZa',
+      clientSecret: '114bdb9695495cce0110c0e3bef3206df56bc3dc',
+      repo: 'Want595.github.io',
+      owner: 'Want595',
+      admin: ['Want595'],
+      id: '041cf5f65a2ca61258d9af5a8fefcc50',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  const loadGitalk = async() => {
+    if (typeof Gitalk === 'function') initGitalk()
+    else {
+      await btf.getCSS('https://cdn.jsdelivr.net/npm/gitalk@1.8.0/dist/gitalk.min.css')
+      await btf.getScript('https://cdn.jsdelivr.net/npm/gitalk@1.8.0/dist/gitalk.min.js')
+      initGitalk()
+    }
+  }
+  
+  const commentCount = n => {
+    const isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+    if (isCommentCount) {
+      isCommentCount.textContent= n
+    }
+  }
+
+  if ('Gitalk' === 'Gitalk' || !false) {
+    if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+    else loadGitalk()
+  } else {
+    window.loadOtherComment = loadGitalk
+  }
+})()</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.14.0-b3"></script></div></div></body></html>
