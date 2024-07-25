@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://want595.github.io/2024/07/24/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%A1%8C%E4%B8%9A%E5%BA%94%E7%94%A8-%E5%BE%AE%E5%8D%9A%E7%83%AD%E7%82%B9%E5%8F%91%E7%8E%B0/</loc>
+    
+    <lastmod>2024-07-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://want595.github.io/2024/07/24/%E9%85%8D%E7%BD%AEMarkdown%E7%9A%84%E5%9B%BE%E5%BA%8A%EF%BC%88Typora-PicGo-GitHub%EF%BC%89/</loc>
     
     <lastmod>2024-07-25</lastmod>
@@ -129,15 +138,6 @@
   
   <url>
     <loc>https://want595.github.io/2024/07/25/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%A1%8C%E4%B8%9A%E5%BA%94%E7%94%A8-%E4%BA%A4%E9%80%9A%E8%BD%A8%E8%BF%B9/</loc>
-    
-    <lastmod>2024-07-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://want595.github.io/2024/07/24/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%A1%8C%E4%B8%9A%E5%BA%94%E7%94%A8-%E5%BE%AE%E5%8D%9A%E7%83%AD%E7%82%B9%E5%8F%91%E7%8E%B0/</loc>
     
     <lastmod>2024-07-25</lastmod>
     
@@ -367,14 +367,14 @@
 
   
   <url>
-    <loc>https://want595.github.io/categories/Hexo/</loc>
+    <loc>https://want595.github.io/categories/Git/</loc>
     <lastmod>2024-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://want595.github.io/categories/Git/</loc>
+    <loc>https://want595.github.io/categories/Hexo/</loc>
     <lastmod>2024-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -396,13 +396,6 @@
   
   <url>
     <loc>https://want595.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9B%86%E7%BE%A4/</loc>
-    <lastmod>2024-07-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://want595.github.io/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%AE%AD/</loc>
     <lastmod>2024-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
