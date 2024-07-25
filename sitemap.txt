@@ -43,6 +43,6 @@ https://want595.github.io/categories/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91Hexo/
 https://want595.github.io/categories/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91Git/
 https://want595.github.io/categories/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91Linux/
 https://want595.github.io/categories/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/
-https://want595.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9B%86%E7%BE%A4/
-https://want595.github.io/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%AE%AD/
 https://want595.github.io/categories/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91Markdown/
+https://want595.github.io/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%AE%AD/
+https://want595.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9B%86%E7%BE%A4/
