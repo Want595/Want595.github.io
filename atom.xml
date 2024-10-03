@@ -6,7 +6,7 @@
   <link href="https://want595.github.io/atom.xml" rel="self"/>
   
   <link href="https://want595.github.io/"/>
-  <updated>2024-10-03T00:37:37.305Z</updated>
+  <updated>2024-10-03T00:41:14.380Z</updated>
   <id>https://want595.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>分享脚本丨合成种地吧</title>
+    <link href="https://want595.github.io/2024/10/03/%E5%88%86%E4%BA%AB%E8%84%9A%E6%9C%AC%E4%B8%A8%E5%90%88%E6%88%90%E7%A7%8D%E5%9C%B0%E5%90%A7/"/>
+    <id>https://want595.github.io/2024/10/03/%E5%88%86%E4%BA%AB%E8%84%9A%E6%9C%AC%E4%B8%A8%E5%90%88%E6%88%90%E7%A7%8D%E5%9C%B0%E5%90%A7/</id>
+    <published>2024-10-03T00:32:32.000Z</published>
+    <updated>2024-10-03T00:41:14.380Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="演讲稿：合成种地吧——开发者分享"><a href="#演讲稿：合成种地吧——开发者分享" class="headerlink" title="演讲稿：合成种地吧——开发者分享"></a>演讲稿：合成种地吧——开发者分享</h1><h2 id="第一页"><a href="#第一页" class="headerlink" title="第一页"></a>第一页</h2><p>哈喽，大家晚上好！我是阿伟，一个文心智能体平台的开发者。</p><p>今天，我很荣幸能在这里与大家分享我在开发智能体「合成种地吧」时的经验和心得。</p><h2 id="第二页"><a href="#第二页" class="headerlink" title="第二页"></a>第二页</h2><p>我将从自我介绍开始，分别从创意构思、开发实践、问题及解决方案、调优分享等方面介绍合成种地吧的智能体。</p><h2 id="第三页"><a href="#第三页" class="headerlink" title="第三页"></a>第三页</h2><h4 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h4><p>首先，我想简单介绍一下我自己。我是一名智能体开发爱好者，同时也是一名科技博主，目前全网粉丝10万+。我曾在文心智能体大赛中获得过情感类智能体的第一名，这也为我后续开发更多有趣的智能体奠定了基础。</p><p>本次我开发了一个名为合成种地吧的优质智能体，这个智能体可以通过对话方式玩类似「涂鸦上帝」的元素合成游戏，初始包括水、光、植物种子、动物幼崽等基础元素。</p><h4 id="创意构思"><a href="#创意构思" class="headerlink" title="创意构思"></a>创意构思</h4><p>接下来，我想谈谈「合成种地吧」这个智能体的创意构思。我的灵感来源于一个合成元素游戏，类似于大家熟悉的“涂鸦上帝”，通过不断合成元素，创造出新的元素或物品。我在该游戏的基础上，结合了知识库调优的技术，开发了一个以种地为主题的合成类游戏，增加了游戏的趣味性和挑战性。</p><p>在游戏中，玩家初始拥有💧水、🔥火、☀光、🌍土等自然元素，🌱小麦、🌱青草等植物种子，🐮奶牛、🐣小鸡、🐟小鱼等动物幼崽，以及加工操作和10个金币。</p><p>游戏的核心功能为合成元素，玩家可以通过与智能体对话，自由组合当前元素列表中的元素，尝试生成新元素。在合成元素时，让智能体首先检索知识库，当知识库中没有检索到答案时，再遵循自然规律合成元素。</p><p>在游戏的基础功能实现后，我增加了购买宝箱和出售元素的趣味功能。</p><p>除了通过合成元素获得新元素，玩家还可以通过购买宝箱获得新的随机元素，宝箱的价格为2个金币。</p><p>玩家可以通过出售当前元素列表中的元素获得金币，但是玩家无法出售💧水、🔥火、☀光、🌍土、⚙️加工等自然元素。</p><p>最后需要限制智能体的回答必须简洁，且都和「合成种地吧」有关，同时引导游戏进行。如果玩家的输入与「合成种地吧」无关，直接告诉玩家不知道，同时将玩家引导回游戏。</p><p>我在整个游戏中主要使用知识库进行调优。</p><p>知识库是智能体输出回答的数据依据，适合有专业数据积累的开发者，以及对输出结果有准确性、专业性要求的开发者。</p><p>在知识库模块上传自己的数据，大模型与用户交互过程中，根据知识库中检索到的相似内容、大模型润色后生成结果，可以有效限定模型的生成范围。</p><p>在零代码开发智能体时，可以引用知识库，限定检索范围。</p><p>在低代码开发智能体时，也可以引用知识库，快捷开发数据插件。</p><p>在实现整个游戏的时候，我也遇到了一些问题。例如在购买宝箱和出售元素时，智能体在计算金币数量的时候出错，这个时候可以通过定义一个变量，让智能体在变量上进行操作，提高智能体的准确性。</p><h2 id="第四页"><a href="#第四页" class="headerlink" title="第四页"></a>第四页</h2><h4 id="开发实践"><a href="#开发实践" class="headerlink" title="开发实践"></a>开发实践</h4><p>接下来，我将通过实践操作，给大家演示「合成种地吧」智能体的开发过程。</p><p>（切到文心智能体平台）</p><p><strong>人物设定</strong></p><p>在人物设定中，我们可以定义游戏的简介、游戏的规则，合成元素、出售元素、购买宝箱等游戏功能，以及游戏的注意事项。</p><p>然后我们可以在思考路径中定义游戏的主要逻辑。例如在合成元素的时候，必须……在合成过程中，……在出售元素的时候……</p><p>最后，我们可以在个性化中优化游戏，定制游戏的特殊事件，以及设置游戏的回复格式等。</p><p>随后我们可以设置游戏的开场白、配置游戏的开场文案和问题。，勾选自动追问选项。如果不需要使用长期记忆功能，可以将其关闭，提升智能体的回复速率。</p><p>这个智能体主要通过知识库进行的调优的。</p><p><strong>开场白</strong>及<strong>引导示例</strong></p><p><strong>知识库</strong></p><p>关闭<strong>长期记忆</strong></p><p><strong>背景形象</strong>和<strong>声音</strong></p><h2 id="第五页"><a href="#第五页" class="headerlink" title="第五页"></a>第五页</h2><h4 id="问题与解决方案"><a href="#问题与解决方案" class="headerlink" title="问题与解决方案"></a>问题与解决方案</h4><p>在实际的开发过程中，我面临了许多挑战。例如，合成的元素有时不符合自然规律，导致游戏体验受到影响。为了解决这个问题，我通过调用知识库进行调优，确保元素的合成符合自然规律。此外，我还遇到了调用知识库失败的情况，这时我通过降低检索阈值和增加分段数的方法，成功解决了这一问题。在回复稳定性方面，我通过降低模型的多样性，提升了智能体的稳定性和玩家的体验感。</p><h4 id="调优分享"><a href="#调优分享" class="headerlink" title="调优分享"></a>调优分享</h4><p>在调优的过程中，我积累了一些宝贵的经验，希望能与大家分享。</p><p>首先，使用知识库进行调优，可以有效解决合成元素不符合自然规律的问题。</p><p>其次，适当调整检索阈值和分段数，有助于提高智能体的调用成功率和响应质量。</p><p>最后，模型的多样性调节是保证回复稳定性的重要手段。</p><h4 id="欢迎体验"><a href="#欢迎体验" class="headerlink" title="欢迎体验"></a>欢迎体验</h4><p>我的分享就到这里，非常感谢大家的聆听。如果大家对这个智能体感兴趣，可以通过扫码一键体验游戏，期待大家的反馈和建议，也希望大家能从我的分享中获得启发，继续在智能体开发领域中探索和创新。</p><p>谢谢大家！</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;演讲稿：合成种地吧——开发者分享&quot;&gt;&lt;a href=&quot;#演讲稿：合成种地吧——开发者分享&quot; class=&quot;headerlink&quot; title=&quot;演讲稿：合成种地吧——开发者分享&quot;&gt;&lt;/a&gt;演讲稿：合成种地吧——开发者分享&lt;/h1&gt;&lt;h2 id=&quot;第一页&quot;&gt;&lt;a h</summary>
+      
+    
+    
+    
+    
+    <category term="极星会" scheme="https://want595.github.io/tags/%E6%9E%81%E6%98%9F%E4%BC%9A/"/>
+    
+  </entry>
   
   <entry>
     <title>立秋专项丨种地创意智能体：合成种地吧</title>
@@ -426,28 +448,6 @@
       
       
     <summary type="html">&lt;h1 id=&quot;恋爱助手&quot;&gt;&lt;a href=&quot;#恋爱助手&quot; class=&quot;headerlink&quot; title=&quot;恋爱助手&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://3ej5av.smartapps.baidu.com/?_swebScene=3611000000000000&quot;&gt;</summary>
-      
-    
-    
-    
-    
-    <category term="极星会" scheme="https://want595.github.io/tags/%E6%9E%81%E6%98%9F%E4%BC%9A/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>探索文心智能体：零代码开发一个恋爱小助手</title>
-    <link href="https://want595.github.io/2024/05/20/2024-05-%E6%8E%A2%E7%B4%A2%E6%96%87%E5%BF%83%E6%99%BA%E8%83%BD%E4%BD%93/"/>
-    <id>https://want595.github.io/2024/05/20/2024-05-%E6%8E%A2%E7%B4%A2%E6%96%87%E5%BF%83%E6%99%BA%E8%83%BD%E4%BD%93/</id>
-    <published>2024-05-20T09:39:16.000Z</published>
-    <updated>2024-07-27T06:47:30.944Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a><strong>写在前面</strong></h1><p><strong>文心智能体大赛</strong>正在火热进行中，博主不才，开发了一个<a href="https://3ej5av.smartapps.baidu.com/?_swebScene=3611000000000000"><strong>恋爱助手</strong></a>智能体，感兴趣的小伙伴快来看看吧！</p><h1 id="一、大赛简介"><a href="#一、大赛简介" class="headerlink" title="一、大赛简介"></a>一、大赛简介</h1><h2 id="1-1-关于大赛"><a href="#1-1-关于大赛" class="headerlink" title="1.1 关于大赛"></a>1.1 关于大赛</h2><p>智能体技术的快速发展带动了用户需求和实际应用场景仍需进一步探索。为激发开发者的创意潜能，探索具有应用价值的智能体，<a href="https://aistudio.baidu.com/competition/detail/1186/0/introduction"><strong>文心智能体大赛</strong></a>应运而生。本赛季赛题将采用征集制，鼓励开发者积极提出赛题设想，设计出具有实际应用价值的智能体。大赛还为开发者提供百万奖金池、百亿流量包、与技术大咖深度交流、免费AI课程等支持，诚邀广大开发者积极参与，共同探索无限可能。文心智能体大赛官网如<strong>图1</strong>所示。</p><p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/27/1.png" alt="img"> </p><p><strong>图1 文心智能体大赛官网</strong></p><h2 id="1-2-关于赛题"><a href="#1-2-关于赛题" class="headerlink" title="1.2 关于赛题"></a>1.2 关于赛题</h2><p>第一期比赛的赛题如<strong>图2</strong>所示，主要的方向是<strong>生活情感</strong>。</p><p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/27/2.png" alt="img"> </p><p><strong>图2 赛题</strong></p><h1 id="二、零代码开发智能体"><a href="#二、零代码开发智能体" class="headerlink" title="二、零代码开发智能体"></a>二、零代码开发智能体</h1><h2 id="2-1-关于智能体"><a href="#2-1-关于智能体" class="headerlink" title="2.1 关于智能体"></a>2.1 关于智能体</h2><p>智能体（Agent），这个词语听起来可能有点高科技，但实际上它是一个相当广泛的概念，可以简单理解为在某个环境里能够自主行动和做出决策的“小东西”。想象一下你家的扫地机器人，它就是一个智能体，可以感知周围的环境，比如哪里有灰尘，哪里是墙壁，并根据这些信息做出决策，比如去脏的地方清扫，避免撞墙，并且采取行动。这就是一个基本的智能体在工作。</p><p>在计算机科学和人工智能领域，智能体的概念更加抽象和灵活。它们不仅限于物理世界中的实体，也存在于软件系统、模拟环境甚至网络中。智能体通过“感知-思考-行动”这一循环与环境互动：</p><ol><li><p><strong>感知</strong>：智能体通过传感器或者接收数据的方式了解周围环境的状态。就像我们用眼睛看、耳朵听一样，智能体也有自己的方式获取信息。</p></li><li><p><strong>思考</strong>：收集到信息后，智能体需要处理这些信息，做出判断或决策。这可能涉及到复杂的计算、学习算法，甚至是预设的规则。就像我们决定下一步要做什么，智能体也要决定它的行动策略。</p></li><li><p><strong>行动</strong>：基于思考的结果，智能体会执行一个或一系列动作来影响环境。比如，一个智能投资软件可能会根据市场分析决定买卖股票。</p></li></ol><p>智能体的应用非常广泛，从简单的自动回复机器人，到复杂的自动驾驶汽车，再到游戏中的NPC（非玩家控制角色），都是智能体的不同表现形式，它们让我们的生活更加便捷，也让虚拟世界更加丰富和真实。</p><p>简单来说，<strong>智能体就是指具有自主决策能力和自我学习能力的计算机程序或机器人</strong>。</p><h2 id="2-2-开发智能体"><a href="#2-2-开发智能体" class="headerlink" title="2.2 开发智能体"></a>2.2 开发智能体</h2><p>接下来，跟着博主一起开发属于自己的智能体吧！</p><ol><li>进入<a href="https://agents.baidu.com/agent/create">文心智能体平台</a>，如<strong>图3</strong>所示，单击左侧的“<strong>创建智能体</strong>”按钮，随后单击零代码中的“<strong>立即创建</strong>”按钮。</li></ol><p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/27/3.png" alt="img"> </p><p><strong>图3 文心智能体平台主页</strong></p><ol><li>如<strong>图4</strong>所示，进入创建智能体的界面，输入智能体的<strong>名称</strong>和<strong>设定</strong>，随后单击“<strong>立即创建</strong>”按钮。</li></ol><p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/27/4.png" alt="img"> </p><p><strong>图4 创建界面</strong></p><ol><li>等待十几秒后，进入<strong>图5</strong>所示的初始化界面中。</li></ol><p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/27/5.png" alt="img"> </p><p><strong>图5 初始化界面</strong></p><p>在<strong>图5</strong>中，左侧部分可以设置智能体的头像、名称、简介以及指令等属性；中间部分可以设置智能体的高级配置，这一部分要求较高，可以不配置；右侧部分可以预览智能体，并且可以输入问题与其交流。</p><ol><li>当所有属性都设置完成后，就可以单击<strong>图6</strong>右上角的“<strong>发布</strong>”按钮将智能体发布啦！</li></ol><p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/27/6.png" alt="img"> </p><p><strong>图6 发布界面</strong></p><ol><li>发布成功后，等待审核就好喽。如<strong>图7</strong>所示，审核通过即“<strong>已上线</strong>”的智能体可以直接使用哦。</li></ol><p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/27/7.png" alt="img"> </p><p><strong>图7 智能体界面</strong></p><h1 id="三、我的智能体"><a href="#三、我的智能体" class="headerlink" title="三、我的智能体"></a>三、我的智能体</h1><p>博主开发了一个<a href="https://3ej5av.smartapps.baidu.com/?_swebScene=3611000000000000"><strong>恋爱助手</strong></a>智能体（已上线），一个字：<strong>酷</strong>！</p><p>该智能体可以帮助在恋爱中遇到情感问题的情侣们解决实际问题，如果你正在面临情感问题，相信它一定可以给你一些实用的建议！该智能体如<strong>图8</strong>和<strong>图9</strong>所示。</p><p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/27/8.png" alt="img"> </p><p><strong>图8 恋爱助手1</strong></p><p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/27/9.png" alt="img"> </p><p><strong>图9 恋爱助手2</strong></p><h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p>快来试试博主开发的<a href="https://3ej5av.smartapps.baidu.com/?_swebScene=3611000000000000"><strong>恋爱助手</strong></a>智能体吧！</p><p>更多有趣的智能体见文心智能体官网的体验中心（<strong>图10</strong>）哦~</p><p><img src="https://cdn.jsdelivr.net/gh/Want595/MarkdownImage@main/image/2024/07/27/10.png" alt="img"> </p><p><strong>图10 体验中心</strong></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;&lt;strong&gt;写在前面&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;文心智能体大赛&lt;/strong&gt;正在火热进行中，博主不才，开发了一个&lt;a </summary>
       
     
     
